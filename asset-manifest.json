@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/MoviesHQ/static/css/main.0577fb44.css",
+    "main.js": "/MoviesHQ/static/js/main.3acd0e6e.js",
+    "static/media/thumbnail.png": "/MoviesHQ/static/media/thumbnail.dc3bb73119b87911f65d.png",
+    "index.html": "/MoviesHQ/index.html",
+    "main.0577fb44.css.map": "/MoviesHQ/static/css/main.0577fb44.css.map",
+    "main.3acd0e6e.js.map": "/MoviesHQ/static/js/main.3acd0e6e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0577fb44.css",
+    "static/js/main.3acd0e6e.js"
+  ]
+}

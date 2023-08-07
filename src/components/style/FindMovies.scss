@@ -1,0 +1,9 @@
+.movie-container {
+  .movie-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .movie-card {
+    padding: 1rem;
+  }
+}

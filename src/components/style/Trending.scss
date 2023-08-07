@@ -1,0 +1,32 @@
+.trending-movies {
+  * {
+    color: aliceblue;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 1rem 2rem;
+  }
+  .movie-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  .movie-card {
+    min-width: 150px;
+    max-height: 300px;
+  }
+}
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(10, 18, 10, 0.5);
+}

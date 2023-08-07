@@ -1,0 +1,22 @@
+.thumbnail-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    .thumbnail{
+        width: 90%;
+        height: 100%;
+        // border: 1px solid white;
+        background-image: url("../image/thumbnail.png");
+        background-size: auto;
+        background-repeat: round;
+    }
+    .thumbnail::before{
+        content: '';
+        display: block;
+        position: relative;
+        box-shadow: inset 0 0 50px 50px #000814;
+        width: 100%;
+        height: 100%;
+    }
+}

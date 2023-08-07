@@ -1,0 +1,43 @@
+.navbar {
+  width: 100%;
+  position: relative;
+  height: 9vh;
+  // border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 8, 20, 0.5);
+
+  .title,
+  .searchBar {
+    display: inline-block;
+  }
+  .title {
+    font-size: 2rem;
+    margin-left: 2rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+  .searchBar{
+    margin-right: 2rem;
+    display: flex;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    width: 20rem;
+    height: auto;
+    align-items: center;
+    svg{
+      padding: 0 0.5rem ;
+      position: relative;
+    }
+    input{
+      position: absolute;
+        padding: 2px;
+        width: 80%;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        color: aliceblue;
+    }
+  }
+}

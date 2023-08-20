@@ -21,6 +21,7 @@ const MoviesNow = () => {
       try {
         const response = await axios.request(options);
         setMovieData(response.data.results);
+        console.log("hello there : " ,response.data.results);
       } catch (error) {
         console.error('Failed to fetch data:', error.message);
       }

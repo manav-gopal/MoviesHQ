@@ -1,10 +1,10 @@
 import React from 'react';
 import './CircularProgressBar.css';
 
-const CircularProgressBar = ({ percentage, color }) => {
+const CircularProgressBar = ({ percentage, color , widthAndHeight}) => {
   const canvasRef = React.useRef(null);
-  const wrapperSize = 30;
-  const lineWidth = 3;
+  const lineWidth = widthAndHeight / 18;
+  const wrapperSize = widthAndHeight-widthAndHeight/(lineWidth*3);
   const radius = (wrapperSize - lineWidth) / 2;
   const centerX = wrapperSize / 2;
   const centerY = wrapperSize / 2;
@@ -21,7 +21,7 @@ const CircularProgressBar = ({ percentage, color }) => {
       context.beginPath();
       context.arc(centerX, centerY, radius, circleStart, 4 * Math.PI, false);
       context.lineWidth = lineWidth;
-      context.strokeStyle = 'rgb(57,57,57)';
+      context.strokeStyle = 'rgb(32,69,41)';
       context.stroke();
 
       context.beginPath();
@@ -30,16 +30,23 @@ const CircularProgressBar = ({ percentage, color }) => {
       context.strokeStyle = color;
       context.stroke();
     };
+    const counter = document.querySelector('.counter');
+    counter.style.width = `${widthAndHeight}px`;
+    counter.style.height = `${widthAndHeight}px`;
+    
+    // const canva = document.querySelector('.circularProgressBar');
+    // canva.style.width = `${widthAndHeight}px`;
+    // canva.style.height = `${widthAndHeight}px`;
 
     drawArc(percentage);
-  }, [percentage, color]);
+  }, [percentage, color, widthAndHeight]);
 
   return (
     <div className="counter">
       <span className="percentage">
         <strong>{Math.round(percentage)}<span>%</span> </strong>
       </span>
-      <canvas ref={canvasRef} className="circleProgressCanvas"></canvas>
+      <canvas ref={canvasRef} className="circleProgressCanvas" width={widthAndHeight} height={widthAndHeight}></canvas>
     </div>
   );
 };

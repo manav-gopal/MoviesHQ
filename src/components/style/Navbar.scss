@@ -1,12 +1,14 @@
 .navbar {
   width: 100%;
-  position: relative;
-  height: 9vh;
+  position: fixed;
+  height: 7vh;
   // border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: rgba(0, 8, 20, 0.5);
+  z-index: 99;
+  backdrop-filter: blur(3px);
 
   .title,
   .searchBar {

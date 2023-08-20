@@ -3,17 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name:'name',
     initialState:{
-        searchItem:"flash"
+        searchItem:"flash",
     },
     reducers:{
-        addUser(state , action){
+        searchByName(state , action){
 
             state.searchItem = action.payload;
-            // console.log(action.payload);
-
-        }
+        },
     }
 });
 
 export default userSlice.reducer;
-export const {addUser} = userSlice.actions;
+export const {searchByName} = userSlice.actions;

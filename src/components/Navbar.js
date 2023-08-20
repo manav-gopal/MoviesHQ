@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUser } from "../redux/slice/SearchSlice";
+import { searchByName } from "../redux/slice/SearchSlice";
 import { useNavigate } from 'react-router-dom';
 import './style/Navbar.scss';
 
@@ -13,7 +13,7 @@ const Navbar = () => {
     function onSubmit(e) {
         e.preventDefault();
         // console.log(e.target.value);
-        dispatch(addUser(searchVal));
+        dispatch(searchByName(searchVal));
 
         navigate('/findmovies');
     }

@@ -3,7 +3,7 @@ import axios from 'axios';
 const apiKey = '75e4d71b41e04f2676aac7bb4d77872b';
 
 // Fetch Movie Details
-export async function fetchMovieDetails(movieId) {
+async function fetchMovieDetails(movieId) {
     const url_link = `https://api.themoviedb.org/3/movie/${movieId}`;
     const options = {
         method: 'GET',
@@ -24,7 +24,7 @@ export async function fetchMovieDetails(movieId) {
 }
 
 // Fetch Movie Credits
-export async function fetchMovieCredits(movieId) {
+async function fetchMovieCredits(movieId) {
     const url_link = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
     const options = {
         method: 'GET',
@@ -45,7 +45,7 @@ export async function fetchMovieCredits(movieId) {
 }
 
 // Fetch Movie Keywords
-export async function fetchMovieKeywords(movieId) {
+async function fetchMovieKeywords(movieId) {
     const url_link = `https://api.themoviedb.org/3/movie/${movieId}/keywords`;
     const options = {
         method: 'GET',
@@ -66,7 +66,7 @@ export async function fetchMovieKeywords(movieId) {
 }
 
 // Fetch Movie Recommendation
-export async function fetchMovieRecommendations(movieId) {
+async function fetchMovieRecommendations(movieId) {
     const url_link = `https://api.themoviedb.org/3/movie/${movieId}/recommendations`;
     const options = {
         method: 'GET',
@@ -89,7 +89,7 @@ export async function fetchMovieRecommendations(movieId) {
 }
 
 // Fetch Movie Release Date
-export async function fetchMovieReleaseDate(movieId) {
+async function fetchMovieReleaseDate(movieId) {
     const url_link = `https://api.themoviedb.org/3/movie/${movieId}/release_dates`;
     const options = {
         method: 'GET',
@@ -129,7 +129,7 @@ export async function fetchMovieReleaseDate(movieId) {
         throw error;
     }
 }
-export async function fetchMovieVideo(movieId) {
+async function fetchMovieVideo(movieId) {
     const url_link = `https://api.themoviedb.org/3/movie/${movieId}/videos`;
     const options = {
         method: 'GET',
@@ -148,4 +148,14 @@ export async function fetchMovieVideo(movieId) {
         console.error('Failed to fetch movie videos:', error.message);
         throw error;
     }
+}
+
+
+export { 
+    fetchMovieDetails,
+    fetchMovieCredits,
+    fetchMovieKeywords,
+    fetchMovieRecommendations,
+    fetchMovieReleaseDate,
+    fetchMovieVideo
 }

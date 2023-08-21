@@ -1,56 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
-import MovieCard from './card/MovieCard';
 import Navbar from './Navbar';
 import './style/MovieDetails.scss';
-import {
-    fetchMovieCredits,
-    fetchMovieDetails,
-    fetchMovieKeywords,
-    fetchMovieRecommendations,
-    fetchMovieReleaseDate,
-    fetchMovieVideo,
-} from './fetch/movieDataAPI';
-import { getDominantColor } from './getDominantColor';
+// import { getDominantColor } from './getDominantColor';
 import CircularProgressBar from './canvas/CircularProgressBar';
-import PopupYoutube from './card/video/Youtube';
+import Youtube from './card/video/Youtube';
 
-function MovieDetail() {
+function MovieDetail(props) {
+    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords,movieRecommendations,movieVideo } = props;
     const refBG = useRef(0);
 
-    const { movieId, movieName } = useParams();
-
-    const [movieDetails, setMovieDetails] = useState(null);
-    const [movieCredits, setMovieCredits] = useState(null);
-    const [movieKeywords, setMovieKeywords] = useState(null);
-    const [movieRecommendations, setMovieRecommendations] = useState(null);
-    const [movieReleaseDates, setMovieReleaseDate] = useState(null);
-    const [movieVideo, setMovieVideo] = useState(null);
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const [details, credits, keywords, recommendations, release_dates, video] = await Promise.all([
-                    fetchMovieDetails(movieId),
-                    fetchMovieCredits(movieId),
-                    fetchMovieKeywords(movieId),
-                    fetchMovieRecommendations(movieId),
-                    fetchMovieReleaseDate(movieId),
-                    fetchMovieVideo(movieId),
-                ]);
-
-                setMovieDetails(details);
-                setMovieCredits(credits);
-                setMovieKeywords(keywords);
-                setMovieRecommendations(recommendations);
-                setMovieReleaseDate(release_dates);
-                setMovieVideo(video);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        fetchData();
-    }, [movieId, movieName]);
     
     useEffect(() => {
         
@@ -220,6 +178,7 @@ function MovieDetail() {
                                         <h3>Overview</h3>
                                         <div className='overview'>
                                             <p>Paragraph</p>
+                                            <Youtube/>
                                         </div>
                                         <ol className='leadPeoples'></ol>
                                     </div>

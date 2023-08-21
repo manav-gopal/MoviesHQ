@@ -12,7 +12,7 @@ export default function MoviesId() {
             if (movieCard) {
                 const movieId = movieCard.getAttribute("movie_id");
                 const movieName = movieCard.getAttribute("movie_name");
-                navigate(`/movie/${movieId}`);
+                navigate(`/movie/${movieId}/${movieName}`);
             }
         };
 

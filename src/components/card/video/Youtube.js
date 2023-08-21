@@ -1,15 +1,17 @@
 import React from 'react';
+import ReactPlayer from 'react-player'
 
-
-const popupConfig = {
-  disableOn: 700,
-  type: 'iframe',
-  mainClass: 'mfp-fade',
-  removalDelay: 160,
-  preloader: false,
-  fixedContentPos: false
-};
-function PopoutYoutube({ videoLink, videoTitle }) {
+function Youtube() {
+  return (
+    <div>
+      <ReactPlayer 
+      className="absolute top-0 left-0"
+      width="100%"
+      height="100%"
+      playsinline
+      url={"https://www.youtube.com/watch?v=xBWjpraDJMU"}/>
+    </div>
+  );
 }
 
-export default PopoutYoutube;
+export default Youtube;

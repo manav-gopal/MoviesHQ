@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy } from 'react';
 import Navbar from './Navbar';
 import './style/MovieDetails.scss';
 // import { getDominantColor } from './getDominantColor';
-import CircularProgressBar from './canvas/CircularProgressBar';
+import CircularProgressBar from './card/canvas/CircularProgressBar';
 import Youtube from './card/video/Youtube';
 
 function MovieDetail(props) {
@@ -13,7 +13,7 @@ function MovieDetail(props) {
     useEffect(() => {
         
         const bg_wrapper = refBG.current.style;
-        const url = 'https://image.tmdb.org/t/p/original/';
+        const url = 'https://image.tmdb.org/t/p/w1280/';
 
         if (movieDetails) {
             if (refBG.current) {
@@ -142,7 +142,7 @@ function MovieDetail(props) {
                         <div className='orignal_header'>
                             <div className='poster_wrapper'>
                                 <div className='poster'>
-                                    <img src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} alt={movieDetails.title} />
+                                    <img src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} alt={movieDetails.title} loading='lazy'/>
                                 </div>
                                 <div className='ott_offer'>Available to rent or buy at Amazon</div>
                             </div>

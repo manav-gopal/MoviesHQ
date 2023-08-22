@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MovieDetail from '../MovieDetails';
-import { 
+import {
     fetchMovieDetails,
     fetchMovieReleaseDate,
     fetchMovieCredits,
@@ -9,10 +9,12 @@ import {
     fetchMovieKeywords,
     fetchMovieRecommendations
 } from '../fetch/movieDataAPI';
+import Spinner from '../Spinner';
 
 function MovieDetailContainer() {
     const { movieId, movieName } = useParams();
 
+    const [dataFetched, setDataFetched] = useState(false);
     const [movieDetails, setMovieDetails] = useState(null);
     const [movieCredits, setMovieCredits] = useState(null);
     const [movieKeywords, setMovieKeywords] = useState(null);
@@ -31,13 +33,14 @@ function MovieDetailContainer() {
                     fetchMovieReleaseDate(movieId),
                     fetchMovieVideo(movieId),
                 ]);
-
+                setDataFetched(false)
                 setMovieDetails(details);
                 setMovieCredits(credits);
                 setMovieKeywords(keywords);
                 setMovieRecommendations(recommendations);
                 setMovieReleaseDate(release_dates);
                 setMovieVideo(video);
+                setDataFetched(true);
             } catch (error) {
                 console.error(error);
             }
@@ -45,18 +48,20 @@ function MovieDetailContainer() {
         fetchData();
     }, [movieId, movieName]);
 
-    if (!movieDetails) {
-        return <div>Loading...</div>;
-    }
-
-    return <MovieDetail
-        movieDetails={movieDetails}
-        movieReleaseDates={movieReleaseDates}
-        movieCredits={movieCredits}
-        movieKeywords={movieKeywords}
-        movieVideo={movieVideo}
-        movieRecommendations={movieRecommendations}
-    />;
+    return (
+        dataFetched ? (
+            <MovieDetail
+                movieDetails={movieDetails}
+                movieReleaseDates={movieReleaseDates}
+                movieCredits={movieCredits}
+                movieKeywords={movieKeywords}
+                movieVideo={movieVideo}
+                movieRecommendations={movieRecommendations}
+            />
+        ) : (
+            <Spinner />
+        )
+    );
 }
 
 export default MovieDetailContainer;

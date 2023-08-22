@@ -1,6 +1,6 @@
 import React from 'react';
 import './MovieCard.css'; // Import the CSS file for the component
-import CircularProgressBar from '../canvas/CircularProgressBar';
+import CircularProgressBar from './canvas/CircularProgressBar';
 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 

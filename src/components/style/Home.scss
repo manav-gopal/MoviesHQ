@@ -1,5 +1,12 @@
+@import './variables';
 .home{
     width: 100%;
     height: 100vh;
-    color: aliceblue;
+    color: $white;
+}
+
+.navbar_space{
+    width: 100dvw;
+    height: 7vh;
+    background-color: rgb(10, 20, 40);
 }

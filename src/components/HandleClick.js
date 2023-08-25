@@ -14,6 +14,14 @@ export default function MoviesId() {
                 const movieName = movieCard.getAttribute("movie_name");
                 navigate(`/movie/${movieId}/${movieName}`);
             }
+
+            //for movie slider
+            const movieSlider = e.target.closest('.slider-content span');
+            if (movieSlider) {
+                const movieId = movieSlider.getAttribute("movie_id");
+                const movieName = movieSlider.getAttribute("movie_name");
+                navigate(`/movie/${movieId}/${movieName}`);
+            }
         };
 
         // Attach the event listener

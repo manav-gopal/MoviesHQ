@@ -3,13 +3,14 @@ import Trending from "../Trending";
 import MoviesNow from "../MoviesNow";
 import '../style/Home.scss';
 import Navbar from "../Navbar";
-import Thumbnail from "../Thumbnail";
+import Slider from "../Slider";
 
 const Home = () =>{
     return(
         <div className="home">
+            <div className='navbar_space'></div>
             <Navbar />
-            <Thumbnail />
+            <Slider />
             <Trending />
             <MoviesNow />
         </div>

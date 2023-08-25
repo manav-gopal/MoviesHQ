@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import './style/Trending.scss';
-import MovieCard from '../components/card/MovieCard';
+import MovieCard from '../components/card/moviecard/MovieCard';
 
 const Trending = () => {
     const [movieData, setMovieData] = useState([]);
@@ -35,7 +35,7 @@ const Trending = () => {
 
     return (
         <div className='trending-movies'>
-            <h1>Trending Movies</h1>
+            <h2>Trending Movies</h2>
             <div className="movie-list">
                 {movieData.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} />

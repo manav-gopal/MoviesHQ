@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './style/MoviesNow.scss';
-import MovieCard from '../components/card/MovieCard'; // Replace with the correct path to the MovieCard component
+import MovieCard from '../components/card//moviecard/MovieCard'; // Replace with the correct path to the MovieCard component
 
 const MoviesNow = () => {
   const [movieData, setMovieData] = useState([]);
@@ -36,7 +36,7 @@ const MoviesNow = () => {
 
   return (
     <div className='movies-container'>
-      <h1>Now Playing</h1>
+      <h2>Now Playing</h2>
       <div className="movie-list">
         {movieData.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />

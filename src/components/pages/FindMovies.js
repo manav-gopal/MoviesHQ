@@ -2,13 +2,13 @@ import React from 'react';
 import '../style/FindMovies.scss';
 import Search from '../Search';
 import Navbar from '../Navbar';
-import Thumbnail from '../Thumbnail';
+import Slider from '../Slider';
 
 const FindMovies = () => {
     return(
         <div className='movie-container'>
         <Navbar />
-        <Thumbnail />
+        <Slider />
         <Search />
         </div>
     )

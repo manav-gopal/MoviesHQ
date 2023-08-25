@@ -150,6 +150,47 @@ async function fetchMovieVideo(movieId) {
     }
 }
 
+// Fetch Movie Details
+async function fetchMovieNowPlaying() {
+    const url_link = `https://api.themoviedb.org/3/movie/now_playing`;
+    const options = {
+        method: 'GET',
+        url: url_link,
+        params: {
+            api_key: apiKey,
+        },
+    }
+    try {
+        const response = await axios(options);
+        const data = response.data;
+        // console.log('Movie Now Playing:', data); // Log the data
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch movie details:', error.message);
+        throw error;
+    }
+}
+
+// Fetch Movie Trending
+async function fetchMovieTrending() {
+    const url_link = `https://api.themoviedb.org/3/trending/movie/week?language=en-US`;
+    const options = {
+        method: 'GET',
+        url: url_link,
+        params: {
+            api_key: apiKey,
+        },
+    }
+    try {
+        const response = await axios(options);
+        const data = response.data.results;
+        console.log('Movie Weekly Trending:', data); // Log the data
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch movie details:', error.message);
+        throw error;
+    }
+}
 
 export { 
     fetchMovieDetails,
@@ -157,5 +198,7 @@ export {
     fetchMovieKeywords,
     fetchMovieRecommendations,
     fetchMovieReleaseDate,
-    fetchMovieVideo
+    fetchMovieVideo,
+    fetchMovieNowPlaying,
+    fetchMovieTrending
 }

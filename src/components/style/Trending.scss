@@ -3,7 +3,7 @@
     color: aliceblue;
   }
 
-  h1 {
+  h2 {
     margin: 0;
     padding: 1rem 2rem;
   }
@@ -13,10 +13,12 @@
     overflow: hidden;
     overflow-x: scroll;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
+    height: 220px;
+    margin-bottom: 20px;
   }
   .movie-card {
-    min-width: 150px;
+    min-width: 120px;
     max-height: 300px;
   }
 }
@@ -29,4 +31,11 @@
 }
 ::-webkit-scrollbar-thumb {
   background-color: rgba(10, 18, 10, 0.5);
+}
+@media (max-width: 600px) {
+  .trending-movies {
+    h2{
+      text-align: center;
+    }
+  }
 }

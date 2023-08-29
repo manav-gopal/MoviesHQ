@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, lazy } from 'react';
+import React, { useState, useEffect, useRef, lazy, createElement } from 'react';
 import Navbar from './Navbar';
 import './style/MovieDetails.scss';
 // import { getDominantColor } from './getDominantColor';
@@ -6,12 +6,12 @@ import CircularProgressBar from './card/canvas/CircularProgressBar';
 import Youtube from './card/video/Youtube';
 
 function MovieDetail(props) {
-    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords,movieRecommendations,movieVideo } = props;
+    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo } = props;
     const refBG = useRef(0);
 
-    
+
     useEffect(() => {
-        
+
         const bg_wrapper = refBG.current.style;
         const url = 'https://image.tmdb.org/t/p/w1280/';
 
@@ -117,21 +117,58 @@ function MovieDetail(props) {
                 list.appendChild(character);
                 leadPeoples.appendChild(list);
             });
-        } 
-    }, [movieDetails, movieReleaseDates, movieCredits,movieVideo]);
-    
+        }
+    }, [movieDetails, movieReleaseDates, movieCredits, movieVideo]);
+
     function youtube() {
         const url = `https://www.youtube.com/watch?v=${movieVideo}`;
         const windowName = 'Youtube';
         window.open(url, windowName, "height=500,width=900");
     }
-    
+
+    // To rearrangeElements when screen size is less then 600px
+    function rearrangeElements() {
+        //Arranging Poster Header Wrapper....
+        const posterHeaderWrapper = document.querySelector('.poster_header_wrapper');
+        const posterWrapper = document.querySelector('.poster_wrapper');
+        const containerElement = document.querySelector('.res_content'); // Define containerElement
+
+        if (window.innerWidth < 600) {
+            containerElement.insertAdjacentElement('afterBegin', posterHeaderWrapper);
+        } else {
+            posterWrapper.insertAdjacentElement('afterEnd', posterHeaderWrapper);
+        }
+
+        // Arranging Runtime of Movies
+        const runtime = document.querySelector('.runtime');
+        const facts = document.querySelector('.facts');
+        const release = document.querySelector('.release');
+
+        if (window.innerWidth < 600) {
+            release.insertAdjacentElement('afterend', runtime);
+        }
+        else{
+            facts.insertAdjacentElement('beforeEnd', runtime);
+        }
+
+        //Rating Text
+        const ratingText = document.querySelector('.rating .text');
+        ratingText.textContent = 'User Score';
+
+    }
+    window.addEventListener('resize',rearrangeElements); // For Developing perpose.
+    useEffect(() => {
+        rearrangeElements(); // Call the function when the component mounts
+    }, []);
+
     if (!movieDetails) {
         return <div>
             <Navbar />
             <div className='nav_cover'></div>
             Loading...</div>;
     }
+
+
     return (
         <div>
             <Navbar />
@@ -142,7 +179,7 @@ function MovieDetail(props) {
                         <div className='orignal_header'>
                             <div className='poster_wrapper'>
                                 <div className='poster'>
-                                    <img src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} alt={movieDetails.title} loading='lazy'/>
+                                    <img src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} alt={movieDetails.title} loading='lazy' />
                                 </div>
                                 <div className='ott_offer'>Available to rent or buy at Amazon</div>
                             </div>
@@ -169,7 +206,7 @@ function MovieDetail(props) {
                                         </li>
                                         <li className='trailer'>
                                             <div onClick={youtube}>
-                                            <span className='playIcon'></span>Play Trailer
+                                                <span className='playIcon'></span>Play Trailer
                                             </div>
                                         </li>
                                     </ul>
@@ -178,7 +215,6 @@ function MovieDetail(props) {
                                         <h3>Overview</h3>
                                         <div className='overview'>
                                             <p>Paragraph</p>
-                                            <Youtube/>
                                         </div>
                                         <ol className='leadPeoples'></ol>
                                     </div>
@@ -187,6 +223,7 @@ function MovieDetail(props) {
                         </div>
                     </div>
                 </div>
+                <div className='res_content'></div>
             </div>
         </div>
     );

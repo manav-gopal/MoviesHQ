@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
-import './style/Trending.scss';
+import './style/MoviesNow.scss';
 import MovieCard from '../components/card/moviecard/MovieCard';
 import { useSelector } from 'react-redux';
 

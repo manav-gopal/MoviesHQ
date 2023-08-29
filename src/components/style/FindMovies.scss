@@ -1,9 +1,23 @@
 .movie-container {
   .movie-list {
+    width: 100%;
+    height: 100vh;
     flex-wrap: wrap;
     justify-content: center;
   }
-  .movie-card {
-    padding: 1rem;
+  // .movie-card {
+  //   padding: 1rem;
+  // }
+}
+@media (max-width: 600px) {
+  .movies-container {
+    h2{
+      text-align: center;
+    }
+    .movie-list {
+      .movie-card {
+        max-width: 120px;
+      }
+    }
   }
 }

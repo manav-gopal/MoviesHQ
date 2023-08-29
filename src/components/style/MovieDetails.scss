@@ -8,8 +8,11 @@ $imageBorderRadius: 8px;
 .nav_cover {
   height: 7vh;
 }
+
+/* Movie Detail Styles */
 .movies_detail {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 85vh;
   margin-top: 1rem;
@@ -61,13 +64,14 @@ $imageBorderRadius: 8px;
             border-radius: 0 0 8px 8px;
           }
         }
+
+
+        /* Header Content Styles */
+
         .poster_header_wrapper {
           width: auto;
           height: 100%;
           //! border: 2px solid green;
-        }
-
-        .poster_header_wrapper {
           display: flex;
           align-items: center;
           padding-left: 40px;
@@ -85,6 +89,8 @@ $imageBorderRadius: 8px;
                 opacity: 0.5;
                 font-weight: 400;
               }
+
+              /* Certification and Genres/Runtimes styles */
               .facts {
                 .certification {
                   display: inline-flex;
@@ -123,6 +129,8 @@ $imageBorderRadius: 8px;
                 }
               }
             }
+
+            /* Rating and Trailer styles */
             .action {
               display: flex;
               padding: 0;
@@ -225,6 +233,226 @@ $imageBorderRadius: 8px;
                     font-size: 0.9em;
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//! Responve for Mobile
+
+@media (max-width: 600px) {
+  .nav_cover {
+    height: 6vh;
+  }
+  .movies_detail {
+    .bg_wrapper {
+      height: 40vh;
+      .bg_blur {
+        .orignal_header {
+          .poster_wrapper {
+            max-width: 150px;
+            min-width: 0;
+            .poster {
+            }
+            .ott_offer {
+            }
+          }
+        }
+      }
+    }
+  }
+  .res_content{
+    width: 100dvw;
+    height: 100vh;
+
+    .poster_header_wrapper {
+      width: 100%;
+      height: 100%;
+      //! border: 2px solid green;
+      display: flex;
+      align-items: center;
+      // padding-left: 40px;
+      .header_poster {
+        .ott_title {
+          .title {
+            margin: 0;
+            display: flex;
+            // flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+          }
+          .name {
+            text-align: center;
+            font-weight: bolder;
+            font-size: 1.7rem;
+            padding-right: 10px;
+          }
+          .tag.release_date {
+            padding-right: 10px;
+            font-size: 1.3rem;
+            text-align: center;
+            opacity: 0.5;
+            font-weight: 400;
+          }
+          .facts {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            .certification {
+              display: inline-flex;
+              white-space: nowrap;
+              align-items: center;
+              align-content: center;
+              padding: 0.06em 4px 0.15em !important;
+              // border: 1px solid rgba(0, 0, 0, 0.6);
+              // color: rgba(0, 0, 0, 0.6);
+              border: 1px solid rgba(255, 255, 255, 0.6);
+              color: rgba(255, 255, 255, 0.6);
+              line-height: 1;
+              border-radius: 2px;
+              margin-right: 7px;
+              margin-top: 10px;
+            }
+            .genres,
+            .runtime {
+              margin-top: 10px;
+              padding-left: 20px;
+              position: relative;
+              top: 0;
+              left: 0;
+              margin-right: 10px;
+            }
+            .genres{
+              padding-left: 0;
+            }
+            .release{
+              margin-top: 10px;
+            }
+            .runtime::before {
+              font-size: 1.1em;
+              line-height: 1;
+              content: "•";
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 7px;
+              display: inline-flex;
+              align-content: center;
+              align-items: center;
+            }
+          }
+        }
+        .action {
+          display: flex;
+          padding: 0;
+          flex-direction: row;
+          list-style: none;
+          margin-bottom: 0;
+          width: 100%;
+          height: 68px;
+          align-items: center;
+          justify-content: center;
+          .rating {
+            display: flex;
+            align-items: center;
+            transform: scale(.7);
+            border-right: 2px solid white;
+            padding-right: 4rem;
+            .circular_bar {
+              transform: translate(50%, 75%);
+              width: 68px;
+              height: 68px;
+            }
+            .percentage {
+              font-size: 1.5rem;
+              span {
+                font-size: 0.8rem;
+              }
+            }
+            .text {
+              display: flex;
+              flex-wrap: nowrap;
+              flex-direction: row;
+              margin: 0 0 0 6px;
+              font-weight: 700;;
+            }
+          }
+          .trailer {
+            cursor: pointer;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            .playIcon {
+              filter: invert(1);
+              color: #fff;
+              background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg);
+              position: relative;
+              top: 0;
+              left: 0;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              min-width: 1em;
+              min-height: 1em;
+              width: 1em;
+              height: 1em;
+              line-height: inherit;
+              background-position: center center;
+              background-repeat: no-repeat;
+              color: inherit;
+              box-sizing: border-box;
+            }
+          }
+        }
+        .header_info {
+          padding: 20px;
+          .tagline {
+            margin-bottom: 0;
+            font-size: 1.1em;
+            font-weight: 400;
+            font-style: italic;
+            opacity: 0.7;
+          }
+          .leadPeoples {
+            display: flex;
+            position: relative;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            list-style-type: none;
+            list-style-position: inside;
+            margin: 0;
+            padding: 0;
+            margin-top: 20px;
+            top: 0;
+            left: 0;
+
+            li {
+              width: 33%;
+              flex-basis: 33%;
+              text-align: left;
+              margin-right: 0;
+              box-sizing: border-box;
+              padding-right: 20px;
+              min-width: 140px;
+
+              p {
+                font-size: 1em;
+                margin: 0;
+                padding: 20px 0 0 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              p + p {
+                padding: 0;
+                font-size: 0.9em;
               }
             }
           }

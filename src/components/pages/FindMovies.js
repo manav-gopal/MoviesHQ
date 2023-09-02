@@ -8,6 +8,7 @@ const FindMovies = () => {
     return(
         <div className='movie-container'>
         <Navbar />
+        <div className='nav_cover'></div>
         <Slider />
         <Search />
         </div>

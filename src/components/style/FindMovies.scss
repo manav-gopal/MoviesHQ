@@ -1,16 +1,34 @@
 .movie-container {
-  .movie-list {
-    width: 100%;
-    height: auto;
-    flex-wrap: wrap;
-    justify-content: center;
+  * {
+    color: aliceblue;
   }
-  // .movie-card {
-  //   padding: 1rem;
-  // }
+  .nav_cover {
+    height: 7vh;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 1rem 2rem;
+  }
+  .movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    overflow-x: scroll;
+    justify-content: center;
+    padding: 0 1rem;
+    column-gap: 0.3%;
+  }
+  .movie-card {
+    max-width: 130px;
+    height: auto;
+  }
 }
 @media (max-width: 600px) {
   .movies-container {
+    .nav_cover {
+      height: 6vh;
+    }
     h2{
       text-align: center;
     }

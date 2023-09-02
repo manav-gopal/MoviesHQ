@@ -133,7 +133,7 @@ function MovieDetail(props) {
         const posterWrapper = document.querySelector('.poster_wrapper');
         const containerElement = document.querySelector('.res_content'); // Define containerElement
 
-        if (window.innerWidth < 600) {
+        if (window.innerWidth < 600 && posterHeaderWrapper && !containerElement) { // added extra conditions to resolve errors
             containerElement.insertAdjacentElement('afterBegin', posterHeaderWrapper);
         } else {
             posterWrapper.insertAdjacentElement('afterEnd', posterHeaderWrapper);

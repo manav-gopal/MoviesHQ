@@ -6,7 +6,7 @@ $imageBorderRadius: 8px;
   box-sizing: border-box;
 }
 .nav_cover {
-  height: 7vh;
+  height: 6vh;
 }
 
 /* Movie Detail Styles */
@@ -22,6 +22,7 @@ $imageBorderRadius: 8px;
     // border: 2px solid red;
     display: flex;
     background-size: cover;
+      box-shadow: inset 0 -50px 50px -10px #000814;
 
     .bg_blur {
       display: flex;

@@ -36,7 +36,7 @@ async function fetchMovieCredits(movieId) {
     try {
         const response = await axios(options);
         const data = response.data;
-        // console.log('Movie Credits:', data); // Log the data
+        console.log('Movie Credits:', data); // Log the data
         return data;
     } catch (error) {
         console.error('Failed to fetch movie credits:', error.message);

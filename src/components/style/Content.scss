@@ -1,0 +1,50 @@
+.content_wrapper {
+  width: 100dvw;
+  display: flex;
+  align-items: flex-start;
+  padding: 30px 40px;
+
+  .left,
+  .right {
+    // border: 1px solid #ffffff3e;
+  }
+
+  //left section - crew and recommondations etc
+  .left {
+    width: calc(100dvw - 80px - 268px);
+    max-width: calc(1440px - 80px - 268px);
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    padding-right: 30px;
+
+    .top_billed{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-bottom: 1px solid #373737;
+      
+      h3{
+        font-weight: bold;
+      }
+      .cast_scroller{
+        display: flex;
+        width: 100%;
+      }
+      a{
+        text-decoration: none;
+        color: aliceblue;
+        font-weight: 600;
+        padding-bottom: 20px;
+      }
+    }
+  }
+
+  //right section for kewords etc
+  .right {
+    min-width: 260px;
+    width: 260px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

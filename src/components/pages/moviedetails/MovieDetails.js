@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, lazy, createElement } from 'react';
-import Navbar from './Navbar';
-import './style/MovieDetails.scss';
+import Navbar from '../../Navbar';
+import '../../style/MovieDetails.scss';
 // import { getDominantColor } from './getDominantColor';
-import CircularProgressBar from './card/canvas/CircularProgressBar';
-import Youtube from './card/video/Youtube';
+import CircularProgressBar from '../../card/canvas/CircularProgressBar';
+// import Youtube from './card/video/Youtube';
+import Content from './Content';
 
 function MovieDetail(props) {
     const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo } = props;
@@ -133,9 +134,9 @@ function MovieDetail(props) {
         const posterWrapper = document.querySelector('.poster_wrapper');
         const containerElement = document.querySelector('.res_content'); // Define containerElement
 
-        if (window.innerWidth < 600 && posterHeaderWrapper && !containerElement) { // added extra conditions to resolve errors
+        if (window.innerWidth < 600 && !containerElement.innerHTML) { // added extra conditions to resolve errors with screen resizing 
             containerElement.insertAdjacentElement('afterBegin', posterHeaderWrapper);
-        } else {
+        } else if (window.innerWidth > 600 && containerElement.innerHTML) {
             posterWrapper.insertAdjacentElement('afterEnd', posterHeaderWrapper);
         }
 
@@ -223,7 +224,8 @@ function MovieDetail(props) {
                         </div>
                     </div>
                 </div>
-                <div className='res_content'></div>
+                <div className='res_content'></div> {/*For Inserting the Movie data inside, In mobile view*/}
+                <Content credits={movieCredits} />
             </div>
         </div>
     );

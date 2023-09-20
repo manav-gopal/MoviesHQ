@@ -4,7 +4,7 @@ import Home from './components/pages/Home';
 import Errors from './components/pages/Errors';
 import FindMovies from './components/pages/FindMovies';
 import HandleClick from './components/HandleClick';
-import MovieDetailContainer from './components/pages/MovieDetailContainer';
+import MovieDetailContainer from './components/pages/moviedetails/MovieDetailContainer';
 
 function App() {
   return (

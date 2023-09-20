@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import MovieDetail from '../MovieDetails';
+import MovieDetail from './MovieDetails';
 import {
     fetchMovieDetails,
     fetchMovieReleaseDate,
@@ -8,8 +8,8 @@ import {
     fetchMovieVideo,
     fetchMovieKeywords,
     fetchMovieRecommendations
-} from '../fetch/movieDataAPI';
-import Spinner from '../Spinner';
+} from '../../fetch/movieDataAPI';
+import Spinner from '../../Spinner';
 
 function MovieDetailContainer() {
     const { movieId, movieName } = useParams();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import './style/Trending.scss';
-import MovieCard from '../components/card/moviecard/MovieCard';
+import MovieCard from './card/moviecard/MovieCard';
 
 const Trending = () => {
     const [movieData, setMovieData] = useState([]);

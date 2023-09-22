@@ -18,25 +18,51 @@
     flex: 0 1 auto;
     padding-right: 30px;
 
-    .top_billed{
+    .top_billed {
       display: flex;
       flex-direction: column;
       width: 100%;
       border-bottom: 1px solid #373737;
-      
-      h3{
+
+      h3 {
         font-weight: bold;
       }
-      .cast_scroller{
+      .cast_scroller {
         display: flex;
         width: 100%;
       }
-      a{
+      a {
         text-decoration: none;
         color: aliceblue;
         font-weight: 600;
         padding-bottom: 20px;
       }
+    }
+
+    .social_panel {
+      width: 100%;
+      padding: 20px 0;
+      .review {
+        width: 100%;
+        display: block;
+
+        .menu {
+          display: flex;
+          align-items: baseline;
+
+          h4 {
+            padding-left: 20px;
+          }
+        }
+        .content {
+          width: 100%;
+        }
+      }
+    }
+    .recommendation_panel {
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 0;
     }
   }
 
@@ -44,7 +70,21 @@
   .right {
     min-width: 260px;
     width: 260px;
+    height: 100%;
+    z-index: 1;
     display: flex;
     flex-wrap: wrap;
+    box-shadow: -20px 0px 35px 35px rgba(0,8,20,1);
+  }
+}
+
+@media (max-width: 600px) {
+  .content_wrapper {
+    flex-direction: column;
+    padding: 10px 20px;
+
+    .left,.right{
+      width: 100dvw;
+    }
   }
 }

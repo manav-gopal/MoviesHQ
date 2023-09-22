@@ -2,7 +2,7 @@ import React from 'react';
 import './MovieCard.css'; // Import the CSS file for the component
 import CircularProgressBar from '../canvas/CircularProgressBar';
 
-const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+const IMG_PATH = 'https://image.tmdb.org/t/p/w300';
 
 const MovieCard = ({ movie }) => {
   const { title, poster_path, vote_average ,id} = movie;

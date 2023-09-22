@@ -80,7 +80,7 @@ async function fetchMovieRecommendations(movieId) {
     try {
         const response = await axios(options);
         const data = response.data.results;
-        // console.log('Movie Recommendations:', data); // Log the data
+        console.log('Movie Recommendations:', data); // Log the data
         return data;
     } catch (error) {
         console.error('Failed to fetch movie recommendations:', error.message);
@@ -190,6 +190,27 @@ async function fetchMovieTrending() {
         console.error('Failed to fetch movie details:', error.message);
         throw error;
     }
+
+}
+// Fetch Movie Review
+async function fetchMovieReviews(movieId) {
+    const url_link = `https://api.themoviedb.org/3/movie/${movieId}/reviews`;
+    const options = {
+        method: 'GET',
+        url: url_link,
+        params: {
+            api_key: apiKey,
+        },
+    }
+    try {
+        const response = await axios(options);
+        const data = response.data.results;
+        // console.log("Reviews: ",data);
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch movie reviews:', error.message);
+        throw error;
+    }
 }
 
 export { 
@@ -200,5 +221,6 @@ export {
     fetchMovieReleaseDate,
     fetchMovieVideo,
     fetchMovieNowPlaying,
-    fetchMovieTrending
+    fetchMovieTrending,
+    fetchMovieReviews
 }

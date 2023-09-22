@@ -7,7 +7,7 @@ import CircularProgressBar from '../../card/canvas/CircularProgressBar';
 import Content from './Content';
 
 function MovieDetail(props) {
-    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo } = props;
+    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo, movieReviews } = props;
     const refBG = useRef(0);
 
 
@@ -225,7 +225,7 @@ function MovieDetail(props) {
                     </div>
                 </div>
                 <div className='res_content'></div> {/*For Inserting the Movie data inside, In mobile view*/}
-                <Content credits={movieCredits} />
+                <Content credits={movieCredits} reviews={movieReviews} recommendations={movieRecommendations}/>
             </div>
         </div>
     );

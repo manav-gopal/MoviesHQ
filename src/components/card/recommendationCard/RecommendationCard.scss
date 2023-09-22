@@ -1,0 +1,68 @@
+.recommendation_panel{
+    .card_wrapper{
+        width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0;
+    padding-bottom: 20px;
+    .card{
+        min-width: 222px;
+        list-style: none;
+        margin-right: 10px;
+        overflow: hidden;
+        border-radius: 5px 5px 0 0;
+        border: 1px solid rgba(98, 98, 98, 0.1);
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        .image{
+            width: 235px;
+            min-width: 135px;
+            height: 150px;
+        }
+        .no_image{
+            width: 135px;
+            height: 150px;
+            transform: translateX(-5%);
+            background-color: rgba(128, 128, 128, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 50%;
+                height: 50%;
+            }
+        }
+
+        p{
+            padding: 0 10px;
+        }
+        img+p,div+p{
+            font-size: 1rem;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+        div+p{
+            padding-top: 14px;
+        }
+        p+p{
+            font-size: .7rem;
+            font-weight: 300;
+        }
+    }
+    .more_cards{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        min-width: 135px;
+    }
+}
+}

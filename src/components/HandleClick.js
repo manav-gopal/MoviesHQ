@@ -14,6 +14,13 @@ export default function MoviesId() {
                 const movieName = movieCard.getAttribute("movie_name");
                 navigate(`/movie/${movieId}/${movieName}`);
             }
+            //for Reccomendation card
+            const recommendationCard = e.target.closest('.recommendation .card');
+            if (recommendationCard) {
+                const movieId = recommendationCard.getAttribute("movie_id");
+                const movieName = recommendationCard.getAttribute("movie_name");
+                navigate(`/movie/${movieId}/${movieName}`);
+            }
 
             //for movie slider
             const movieSlider = e.target.closest('.slider-content span');

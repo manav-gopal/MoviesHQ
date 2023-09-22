@@ -7,7 +7,8 @@ import {
     fetchMovieCredits,
     fetchMovieVideo,
     fetchMovieKeywords,
-    fetchMovieRecommendations
+    fetchMovieRecommendations,
+    fetchMovieReviews
 } from '../../fetch/movieDataAPI';
 import Spinner from '../../Spinner';
 
@@ -21,17 +22,19 @@ function MovieDetailContainer() {
     const [movieRecommendations, setMovieRecommendations] = useState(null);
     const [movieReleaseDates, setMovieReleaseDate] = useState(null);
     const [movieVideo, setMovieVideo] = useState(null);
+    const [movieReviews, setMovieReviews] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const [details, credits, keywords, recommendations, release_dates, video] = await Promise.all([
+                const [details, credits, keywords, recommendations, release_dates, video, reviews] = await Promise.all([
                     fetchMovieDetails(movieId),
                     fetchMovieCredits(movieId),
                     fetchMovieKeywords(movieId),
                     fetchMovieRecommendations(movieId),
                     fetchMovieReleaseDate(movieId),
                     fetchMovieVideo(movieId),
+                    fetchMovieReviews(movieId),
                 ]);
                 setDataFetched(false)
                 setMovieDetails(details);
@@ -40,6 +43,7 @@ function MovieDetailContainer() {
                 setMovieRecommendations(recommendations);
                 setMovieReleaseDate(release_dates);
                 setMovieVideo(video);
+                setMovieReviews(reviews);
                 setDataFetched(true);
             } catch (error) {
                 console.error(error);
@@ -57,6 +61,7 @@ function MovieDetailContainer() {
                 movieKeywords={movieKeywords}
                 movieVideo={movieVideo}
                 movieRecommendations={movieRecommendations}
+                movieReviews={movieReviews}
             />
         ) : (
             <Spinner />

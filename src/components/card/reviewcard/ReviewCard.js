@@ -1,6 +1,6 @@
 import React from 'react';
 import './ReviewCard.scss';
-import userIcon from '../../image/user_icon.png';
+import userIcon from '../../../assets/image/user_icon.png';
 
 function ReviewCard(props) {
     // if there is no Reviews for the movie then return a comment 

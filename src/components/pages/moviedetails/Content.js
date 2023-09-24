@@ -5,10 +5,10 @@ import ReviewCard from '../../card/reviewcard/ReviewCard';
 import RecommendationCard from '../../card/recommendationCard/RecommendationCard';
 
 //icons
-import facebook_icon from '../../image/facebook_icon.png'
-import twitterx_icon from '../../image/twitterx_icon.png'
-import instagram_icon from '../../image/instagram_icon.png'
-import link_icon from '../../image/link_icon.png'
+import facebook_icon from '../../../assets/image/facebook_icon.png'
+import twitterx_icon from '../../../assets/image/twitterx_icon.png'
+import instagram_icon from '../../../assets/image/instagram_icon.png'
+import link_icon from '../../../assets/image/link_icon.png'
 
 //Abbriviation Map
 const abbreviationMap = {

@@ -5,7 +5,7 @@ import userIcon from '../../image/user_icon.png';
 function ReviewCard(props) {
     // if there is no Reviews for the movie then return a comment 
     if (props.reviews.length === 0 || props.reviews.length === null) {
-        return <p>We don't have any reviews for this Movie.</p>
+        return <p>We don't have any reviews for this Movie Yet.</p>
     }
     //To formate the date in Local sttring form Ex. "August 8, 2023"
     function formatDate(dateString) {

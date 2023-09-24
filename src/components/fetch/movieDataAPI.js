@@ -36,7 +36,7 @@ async function fetchMovieCredits(movieId) {
     try {
         const response = await axios(options);
         const data = response.data;
-        console.log('Movie Credits:', data); // Log the data
+        // console.log('Movie Credits:', data); // Log the data
         return data;
     } catch (error) {
         console.error('Failed to fetch movie credits:', error.message);
@@ -57,7 +57,7 @@ async function fetchMovieKeywords(movieId) {
     try {
         const response = await axios(options);
         const data = response.data.keywords;
-        // console.log('Movie Keywords:', data); // Log the data
+        console.log('Movie Keywords:', data); // Log the data
         return data;
     } catch (error) {
         console.error('Failed to fetch movie keywords:', error.message);
@@ -80,7 +80,7 @@ async function fetchMovieRecommendations(movieId) {
     try {
         const response = await axios(options);
         const data = response.data.results;
-        console.log('Movie Recommendations:', data); // Log the data
+        // console.log('Movie Recommendations:', data); // Log the data
         return data;
     } catch (error) {
         console.error('Failed to fetch movie recommendations:', error.message);
@@ -150,7 +150,7 @@ async function fetchMovieVideo(movieId) {
     }
 }
 
-// Fetch Movie Details
+// Fetch Now playing Movie
 async function fetchMovieNowPlaying() {
     const url_link = `https://api.themoviedb.org/3/movie/now_playing`;
     const options = {
@@ -184,7 +184,7 @@ async function fetchMovieTrending() {
     try {
         const response = await axios(options);
         const data = response.data.results;
-        console.log('Movie Weekly Trending:', data); // Log the data
+        // console.log('Movie Weekly Trending:', data); // Log the data
         return data;
     } catch (error) {
         console.error('Failed to fetch movie details:', error.message);
@@ -213,6 +213,28 @@ async function fetchMovieReviews(movieId) {
     }
 }
 
+// Fetch Movie External Ids
+async function fetchMovieExternalIds(movieId) {
+    const url_link = `https://api.themoviedb.org/3/movie/${movieId}/external_ids`;
+    const options = {
+        method: 'GET',
+        url: url_link,
+        params: {
+            api_key: apiKey,
+        },
+    }
+    try {
+        const response = await axios(options);
+        const data = response.data;
+        console.log("External Ids: ",data);
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch movie external ids:', error.message);
+        throw error;
+    }
+}
+
+
 export { 
     fetchMovieDetails,
     fetchMovieCredits,
@@ -222,5 +244,6 @@ export {
     fetchMovieVideo,
     fetchMovieNowPlaying,
     fetchMovieTrending,
-    fetchMovieReviews
+    fetchMovieReviews,
+    fetchMovieExternalIds
 }

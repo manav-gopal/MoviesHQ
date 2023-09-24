@@ -8,7 +8,8 @@ import {
     fetchMovieVideo,
     fetchMovieKeywords,
     fetchMovieRecommendations,
-    fetchMovieReviews
+    fetchMovieReviews,
+    fetchMovieExternalIds
 } from '../../fetch/movieDataAPI';
 import Spinner from '../../Spinner';
 
@@ -23,11 +24,12 @@ function MovieDetailContainer() {
     const [movieReleaseDates, setMovieReleaseDate] = useState(null);
     const [movieVideo, setMovieVideo] = useState(null);
     const [movieReviews, setMovieReviews] = useState(null);
+    const [movieExternalIds, setMovieExternalIds] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const [details, credits, keywords, recommendations, release_dates, video, reviews] = await Promise.all([
+                const [details, credits, keywords, recommendations, release_dates, video, reviews, external_ids] = await Promise.all([
                     fetchMovieDetails(movieId),
                     fetchMovieCredits(movieId),
                     fetchMovieKeywords(movieId),
@@ -35,6 +37,7 @@ function MovieDetailContainer() {
                     fetchMovieReleaseDate(movieId),
                     fetchMovieVideo(movieId),
                     fetchMovieReviews(movieId),
+                    fetchMovieExternalIds(movieId),
                 ]);
                 setDataFetched(false)
                 setMovieDetails(details);
@@ -44,6 +47,7 @@ function MovieDetailContainer() {
                 setMovieReleaseDate(release_dates);
                 setMovieVideo(video);
                 setMovieReviews(reviews);
+                setMovieExternalIds(external_ids);
                 setDataFetched(true);
             } catch (error) {
                 console.error(error);
@@ -62,6 +66,7 @@ function MovieDetailContainer() {
                 movieVideo={movieVideo}
                 movieRecommendations={movieRecommendations}
                 movieReviews={movieReviews}
+                movieExternalIds={movieExternalIds}
             />
         ) : (
             <Spinner />

@@ -2,6 +2,11 @@ import React from 'react';
 import './RecommendationCard.scss';
 
 function RecommendationCard(props) {
+    // If the we dont have any recommendation of the movie show below comment
+    if (props.recommendations.length === 0) {
+        return <p>We dont have any recommendations for this Movie Yet.</p>
+    }
+    // else
     return (
         <ul className='card_wrapper'>
             {props.recommendations.slice(0,12).map((item, index) => {

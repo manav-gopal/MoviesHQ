@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, lazy, createElement } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navbar from '../../Navbar';
 import '../../style/MovieDetails.scss';
 // import { getDominantColor } from './getDominantColor';
@@ -7,14 +7,14 @@ import CircularProgressBar from '../../card/canvas/CircularProgressBar';
 import Content from './Content';
 
 function MovieDetail(props) {
-    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo, movieReviews } = props;
+    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo, movieReviews, movieExternalIds } = props;
     const refBG = useRef(0);
 
 
     useEffect(() => {
 
         const bg_wrapper = refBG.current.style;
-        const url = 'https://image.tmdb.org/t/p/w1280/';
+        const url = 'https://image.tmdb.org/t/p/w780/';
 
         if (movieDetails) {
             if (refBG.current) {
@@ -47,15 +47,11 @@ function MovieDetail(props) {
             if (movieDetails) {
                 // Genres
                 const genres = document.querySelector('.facts .genres');
-                let gen = '';
-                const len = movieDetails.genres.length;
-                movieDetails.genres.map((item, index) => {
-                    gen += `<span genre_id={${item.id}}>${item.name}</span>`;
-                    if (index !== len - 1) {
-                        gen += ", ";
-                    }
+                const genreElements = movieDetails.genres.map((item) => {
+                    return `<span genre_id={${item.id}}>${item.name}</span>`;
                 });
-                genres.innerHTML = gen; //set the val of gen in genres
+                const genreString = genreElements.join(', ');
+                genres.innerHTML = genreString; //set the val of gen in genres
 
                 //Runtime
                 const runtime = document.querySelector('.facts .runtime');
@@ -121,13 +117,14 @@ function MovieDetail(props) {
         }
     }, [movieDetails, movieReleaseDates, movieCredits, movieVideo]);
 
+    //to open youtube window to show the trailer to the user
     function youtube() {
         const url = `https://www.youtube.com/watch?v=${movieVideo}`;
         const windowName = 'Youtube';
         window.open(url, windowName, "height=500,width=900");
     }
 
-    // To rearrangeElements when screen size is less then 600px
+    //* To rearrangeElements when screen size is less then 600px
     function rearrangeElements() {
         //Arranging Poster Header Wrapper....
         const posterHeaderWrapper = document.querySelector('.poster_header_wrapper');
@@ -148,7 +145,7 @@ function MovieDetail(props) {
         if (window.innerWidth < 600) {
             release.insertAdjacentElement('afterend', runtime);
         }
-        else{
+        else {
             facts.insertAdjacentElement('beforeEnd', runtime);
         }
 
@@ -157,7 +154,7 @@ function MovieDetail(props) {
         ratingText.textContent = 'User Score';
 
     }
-    window.addEventListener('resize',rearrangeElements); // For Developing perpose.
+    window.addEventListener('resize', rearrangeElements); // For Developing perpose.
     useEffect(() => {
         rearrangeElements(); // Call the function when the component mounts
     }, []);
@@ -180,7 +177,7 @@ function MovieDetail(props) {
                         <div className='orignal_header'>
                             <div className='poster_wrapper'>
                                 <div className='poster'>
-                                    <img src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`} alt={movieDetails.title} loading='lazy' />
+                                    <img src={`https://image.tmdb.org/t/p/w342/${movieDetails.poster_path}`} alt={movieDetails.title} loading='lazy' />
                                 </div>
                                 <div className='ott_offer'>Available to rent or buy at Amazon</div>
                             </div>
@@ -225,7 +222,23 @@ function MovieDetail(props) {
                     </div>
                 </div>
                 <div className='res_content'></div> {/*For Inserting the Movie data inside, In mobile view*/}
-                <Content credits={movieCredits} reviews={movieReviews} recommendations={movieRecommendations}/>
+                <Content
+                    credits={movieCredits}
+                    reviews={movieReviews}
+                    recommendations={movieRecommendations}
+                    links={{
+                        facebook: `https://facebook.com/${movieExternalIds.facebook_id}`,
+                        twitter: `https://twitter.com/${movieExternalIds.twitter_id}`,
+                        instagram: `https://instagram.com/${movieExternalIds.instagram_id}`,
+                        homepage: movieDetails.homepage,
+                    }}
+                    details={{
+                        status: movieDetails.status,
+                        original_language: movieDetails.original_language,
+                        budget: movieDetails.budget,
+                        revenue: movieDetails.revenue,
+                    }}
+                    keywords={movieKeywords} />
             </div>
         </div>
     );

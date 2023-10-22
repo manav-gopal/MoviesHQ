@@ -1,0 +1,26 @@
+@import "./components/style/variables";
+
+// Default theme
+// :root {
+//   --background-color: #{$background-color-dark};
+//   --text-color: #{$text-color-dark};
+// }
+
+// Dark theme
+.dark-mode {
+  --background-color: #{$background-color-dark};
+  --text-color: #{$text-color-dark};
+}
+
+// Light theme
+.light-mode {
+  --background-color: #{$background-color-light};
+  --text-color: #{$text-color-light};
+}
+
+.App {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 100%;
+  height: 100%;
+}

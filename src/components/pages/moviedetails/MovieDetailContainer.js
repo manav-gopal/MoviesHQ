@@ -49,6 +49,9 @@ function MovieDetailContainer() {
                 setMovieReviews(reviews);
                 setMovieExternalIds(external_ids);
                 setDataFetched(true);
+
+                 // Scroll to the top of the page
+                 window.scrollTo(0, 0);
             } catch (error) {
                 console.error(error);
             }

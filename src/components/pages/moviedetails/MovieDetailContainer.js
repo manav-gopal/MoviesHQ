@@ -53,7 +53,7 @@ function MovieDetailContainer() {
                  // Scroll to the top of the page
                  window.scrollTo(0, 0);
             } catch (error) {
-                console.error(error);
+                console.error(error);       
             }
         }
         fetchData();

@@ -119,5 +119,3 @@
  */
 
 //! Sort the mergedCrewList based on job role order
-
-//! To Remove the Empty certification Elements

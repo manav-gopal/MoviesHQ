@@ -1,7 +1,7 @@
 # MoviesHQ Project
 
 
-![Project Logo](url_to_your_logo.png) <!-- If you have a project logo, include it here -->
+![Project Logo](https://res.cloudinary.com/dq6uhnvgl/image/upload/v1718802912/MoviesHQ/vogxzjgp39gy98k26fkv.png) <!-- If you have a project logo, include it here -->
 
 Welcome to moviesHQ, your go-to platform for movie enthusiasts to discover, explore, and keep track of their favorite movies and TV shows.
 

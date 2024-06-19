@@ -118,13 +118,6 @@ function MovieDetail(props) {
         }
     }, [movieDetails, movieReleaseDates, movieCredits, movieVideo]);
 
-    //to open youtube window to show the trailer to the user
-    function youtube() {
-        // const url = `https://www.youtube.com/watch?v=${movieVideo}`;
-        // const windowName = 'Youtube';
-        // window.open(url, windowName, "height=500,width=900");
-        setOpen(true);
-    }
 
     //* To rearrangeElements when screen size is less then 600px
     function rearrangeElements() {
@@ -207,7 +200,7 @@ function MovieDetail(props) {
                                         <li className='trailer'>
                                             <React.Fragment>
                                                 <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={movieVideo} onClose={() => setOpen(false)} controle={'0'}/>
-                                                <div onClick={youtube}>
+                                                <div onClick={() => setOpen(true)}>
                                                     <span className='playIcon'></span>Play Trailer
                                                 </div>
                                             </React.Fragment>

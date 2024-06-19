@@ -27,6 +27,10 @@
       margin-left: 1rem;
       letter-spacing: 2px;
       font-weight: bold;
+      img{
+        width: 10rem;
+        height: auto;
+      }
     }
     .searchBar {
       margin: 0 1rem;
@@ -39,7 +43,7 @@
       height: auto;
       min-width: 130px;
       padding: 5px;
-      margin-left: 6rem;
+      // margin-left: 6rem;
       form{
         height: 20px;
         width: 100%;
@@ -61,6 +65,9 @@
     @media (max-width:600px) {
       .title{
         font-size: 1.5rem;
+        img{
+          width: 6rem;
+        }
       }
       .searchBar{
         padding: 3px;

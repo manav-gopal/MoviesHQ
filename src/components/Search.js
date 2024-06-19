@@ -145,7 +145,6 @@ const Search = () => {
 
     return (
         <div className='trending-movies'>
-            <h1 style={{ paddingLeft: "20px" }}>Search results for '<span style={{ color: '#7752FE', textTransform: "capitalize" }}>{data2}</span>'</h1>
             <div className="movie-list">
                 {movieData.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} />

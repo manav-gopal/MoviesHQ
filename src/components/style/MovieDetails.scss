@@ -1,3 +1,5 @@
+@import 'node_modules/react-modal-video/scss/modal-video.scss';
+
 $imageBorderRadius: 8px;
 :root {
   --imageBorderRadius: 8px;
@@ -170,6 +172,9 @@ $imageBorderRadius: 8px;
                 padding: 1rem;
                 display: flex;
                 align-items: center;
+                .modal-video{
+                  backdrop-filter: blur(3px);
+                }
                 .playIcon {
                   filter: invert(1);
                   color: #fff;

@@ -1,14 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../../Navbar';
 import '../../style/MovieDetails.scss';
 // import { getDominantColor } from './getDominantColor';
 import CircularProgressBar from '../../card/canvas/CircularProgressBar';
 // import Youtube from './card/video/Youtube';
 import Content from './Content';
+import ModalVideo from 'react-modal-video';
 
 function MovieDetail(props) {
     const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo, movieReviews, movieExternalIds, movieImages } = props;
     const refBG = useRef(0);
+    const [isOpen, setOpen] = useState(false);
 
     useEffect(() => {
 
@@ -118,9 +120,10 @@ function MovieDetail(props) {
 
     //to open youtube window to show the trailer to the user
     function youtube() {
-        const url = `https://www.youtube.com/watch?v=${movieVideo}`;
-        const windowName = 'Youtube';
-        window.open(url, windowName, "height=500,width=900");
+        // const url = `https://www.youtube.com/watch?v=${movieVideo}`;
+        // const windowName = 'Youtube';
+        // window.open(url, windowName, "height=500,width=900");
+        setOpen(true);
     }
 
     //* To rearrangeElements when screen size is less then 600px
@@ -202,9 +205,12 @@ function MovieDetail(props) {
                                             <div className='text'>User <br /> Score</div>
                                         </li>
                                         <li className='trailer'>
-                                            <div onClick={youtube}>
-                                                <span className='playIcon'></span>Play Trailer
-                                            </div>
+                                            <React.Fragment>
+                                                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={movieVideo} onClose={() => setOpen(false)} controle={'0'}/>
+                                                <div onClick={youtube}>
+                                                    <span className='playIcon'></span>Play Trailer
+                                                </div>
+                                            </React.Fragment>
                                         </li>
                                     </ul>
                                     <div className='header_info'>

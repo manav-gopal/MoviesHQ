@@ -40,6 +40,19 @@
       }
     }
 
+    .images {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-bottom: 1px solid #373737;
+
+      .image_scroller {
+        display: flex;
+        overflow: auto;
+        width: 100%;
+      }
+    }
+
     .social_panel {
       width: 100%;
       padding: 20px 0;

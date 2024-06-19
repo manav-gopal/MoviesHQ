@@ -9,7 +9,8 @@ import {
     fetchMovieKeywords,
     fetchMovieRecommendations,
     fetchMovieReviews,
-    fetchMovieExternalIds
+    fetchMovieExternalIds,
+    fetchMovieImages
 } from '../../fetch/movieDataAPI';
 import Spinner from '../../Spinner';
 
@@ -25,11 +26,12 @@ function MovieDetailContainer() {
     const [movieVideo, setMovieVideo] = useState(null);
     const [movieReviews, setMovieReviews] = useState(null);
     const [movieExternalIds, setMovieExternalIds] = useState(null);
+    const [movieImages, setMovieImages] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const [details, credits, keywords, recommendations, release_dates, video, reviews, external_ids] = await Promise.all([
+                const [details, credits, keywords, recommendations, release_dates, video, reviews, external_ids, images] = await Promise.all([
                     fetchMovieDetails(movieId),
                     fetchMovieCredits(movieId),
                     fetchMovieKeywords(movieId),
@@ -38,6 +40,7 @@ function MovieDetailContainer() {
                     fetchMovieVideo(movieId),
                     fetchMovieReviews(movieId),
                     fetchMovieExternalIds(movieId),
+                    fetchMovieImages(movieId),
                 ]);
                 setDataFetched(false)
                 setMovieDetails(details);
@@ -48,6 +51,7 @@ function MovieDetailContainer() {
                 setMovieVideo(video);
                 setMovieReviews(reviews);
                 setMovieExternalIds(external_ids);
+                setMovieImages(images);
                 setDataFetched(true);
 
                  // Scroll to the top of the page
@@ -70,6 +74,7 @@ function MovieDetailContainer() {
                 movieRecommendations={movieRecommendations}
                 movieReviews={movieReviews}
                 movieExternalIds={movieExternalIds}
+                movieImages={movieImages}
             />
         ) : (
             <Spinner />

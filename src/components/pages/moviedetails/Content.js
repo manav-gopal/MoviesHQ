@@ -2,6 +2,7 @@ import React from 'react';
 import '../../style/Content.scss';
 import UserCard from '../../card/usercard/UserCard';
 import ReviewCard from '../../card/reviewcard/ReviewCard';
+import ImageCard from '../../card/image-card/ImageCard';
 import RecommendationCard from '../../card/recommendationCard/RecommendationCard';
 
 //icons
@@ -70,6 +71,9 @@ function Content(props) {
     const cast = props.credits.cast;
     const cast_slice = cast.slice(0, 9);
     // console.log("Cast slice: ", cast_slice);
+    const images = props.images.backdrops;
+    const image_slice = images.slice(0, 15);
+
     return (
         <div className='content_wrapper'>
             <section className='left'>
@@ -81,6 +85,18 @@ function Content(props) {
                         <UserCard cast={cast_slice} />
                     </div>
                     <p><a href='null' rel='norefferrer' target='_blank'>Full Cast & Crew</a></p>
+                </section>
+
+                {/* For Images and Medias of the movie */}
+                <section className='images'>
+                    <h3>Images</h3>
+                    <div className='image_scroller'>
+                        {image_slice.map((item, index) => {
+                            return (
+                                <ImageCard key={index} imageUrl={item.file_path} />
+                            )
+                        })}
+                    </div>
                 </section>
 
                 {/* For Review of the movie */}

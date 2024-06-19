@@ -7,9 +7,8 @@ import CircularProgressBar from '../../card/canvas/CircularProgressBar';
 import Content from './Content';
 
 function MovieDetail(props) {
-    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo, movieReviews, movieExternalIds } = props;
+    const { movieDetails, movieReleaseDates, movieCredits, movieKeywords, movieRecommendations, movieVideo, movieReviews, movieExternalIds, movieImages } = props;
     const refBG = useRef(0);
-
 
     useEffect(() => {
 
@@ -225,6 +224,7 @@ function MovieDetail(props) {
                 <Content
                     credits={movieCredits}
                     reviews={movieReviews}
+                    images={movieImages}
                     recommendations={movieRecommendations}
                     links={{
                         facebook: `https://facebook.com/${movieExternalIds.facebook_id}`,

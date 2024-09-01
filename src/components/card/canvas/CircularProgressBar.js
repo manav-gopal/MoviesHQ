@@ -39,6 +39,7 @@ const CircularProgressBar = ({ percentage, color , widthAndHeight}) => {
     // canva.style.height = `${widthAndHeight}px`;
 
     drawArc(percentage);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [percentage, color, widthAndHeight]);
 
   return (

@@ -7,15 +7,19 @@ Welcome to moviesHQ, your go-to platform for movie enthusiasts to discover, expl
 
 [Live Demo](https://manav-gopal.github.io/MoviesHQ/)
 
-
 ## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-	- [Dependencies](#dependencies)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [License](#license)
+
+- [MoviesHQ Project](#movieshq-project)
+	- [Table of Contents](#table-of-contents)
+	- [Introduction](#introduction)
+	- [Features](#features)
+	- [Installation](#installation)
+			- [Dependencies](#dependencies)
+	- [Usage](#usage)
+	- [Screenshots](#screenshots)
+			- [Homepage](#homepage)
+			- [Movie Details](#movie-details)
+	- [License](#license)
 
 
 ## Introduction

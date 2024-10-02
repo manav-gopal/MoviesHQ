@@ -1,0 +1,184 @@
+@import '@/styles/_variables.scss';
+// Define SCSS variables for repeated colors and values
+$border-color: $grey;
+$light-color: $white;
+$box-shadow-color: rgba($black, 1);
+$padding-horizontal: 40px;
+$padding-vertical: 30px;
+$min-width-right: 260px;
+$border-radius-small: 0.3rem;
+
+.content_wrapper {
+  width: 100dvw;
+  display: flex;
+  align-items: flex-start;
+  padding: $padding-vertical $padding-horizontal;
+
+  //left section - crew and recommendations etc.
+  .left {
+    width: calc(100dvw - 80px - $min-width-right);
+    max-width: calc(1440px - 80px - $min-width-right);
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    padding-right: 30px;
+
+    .top_billed {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-bottom: 1px solid $border-color;
+
+      h3 {
+        font-weight: bold;
+      }
+      .cast_scroller {
+        display: flex;
+        width: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: $light-color;
+        font-weight: 600;
+        padding-bottom: 20px;
+      }
+    }
+
+    .images {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-bottom: 1px solid $border-color;
+
+      .image_scroller {
+        display: flex;
+        overflow: auto;
+        width: 100%;
+      }
+    }
+
+    .social_panel {
+      width: 100%;
+      padding: 20px 0;
+      .review {
+        width: 100%;
+        display: block;
+
+        .menu {
+          display: flex;
+          align-items: baseline;
+
+          h4 {
+            padding-left: 20px;
+          }
+        }
+        .content {
+          width: 100%;
+        }
+      }
+    }
+
+    .recommendation_panel {
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 0;
+    }
+  }
+
+  //right section for keywords, etc.
+  .right {
+    min-width: $min-width-right;
+    width: $min-width-right;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    box-shadow: -20px 0px 35px 35px $box-shadow-color;
+
+    .social_links {
+      display: flex;
+      width: 100%;
+      height: 60px;
+
+      div {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+          }
+        }
+      }
+
+      .homepage {
+        width: 40px;
+        border-left: 1px solid $border-color;
+        padding-left: 10px;
+        a {
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+          }
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+      margin-bottom: 20px;
+    }
+
+    .keywords_panel {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 40px;
+
+      ul {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+
+        li {
+          background-color: $border-color;
+          opacity: 0.7;
+          color: $light-color;
+          list-style: none;
+          padding: 5px 10px;
+          margin: 2px;
+          border-radius: $border-radius-small;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .content_wrapper {
+    flex-direction: column;
+    padding: 10px 20px;
+
+    .left,
+    .right {
+      width: 100dvw;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import '@/styles/_variables.scss';
+.movie-section {
+  * {
+    color: aliceblue;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .movie-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .movie-card {
+    min-width: 120px;
+    max-height: 300px;
+  }
+}
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(10, 18, 10, 0.5);
+}
+@media (max-width: 600px) {
+  .trending-movies {
+    h2{
+      text-align: center;
+    }
+  }
+}

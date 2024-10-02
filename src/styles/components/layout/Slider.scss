@@ -1,0 +1,114 @@
+/* Slider.scss */
+.slider-container {
+  width: 100%;
+  height: 25rem;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  transition: 0.5s;
+
+  .slider-item {
+    width: 100%;
+    height: 25rem;
+    padding-top: 5px;
+    transition: 0.5s;
+
+    .slider-content {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      box-sizing: border-box;
+
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+
+      h2 {
+        margin: 20px;
+        width: 100%;
+        text-align: center;
+        color: aliceblue;
+        z-index: 9;
+
+        span {
+          font-size: 1rem;
+          opacity: 0.7;
+          cursor: pointer;
+          transition: .5s;
+
+          i {
+            filter: invert(1);
+            color: aliceblue;
+            background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg);
+            position: relative;
+            top: 0.2rem;
+            left: 0;
+            display: inline-flex;
+            min-width: 1em;
+            min-height: 1em;
+            width: 1em;
+            height: 1em;
+          }
+        }
+        span:hover {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    height: 20rem;
+    .slider-item {
+      height: 20rem;
+    }
+  }
+
+  .alice-carousel__dots {
+    margin: 0;
+    .alice-carousel__dots-item {
+      width: 4px;
+      height: 4px;
+      margin-right: 10px;
+      background-color: rgba(128, 128, 128, 0.5);
+      transition: 0.5s;
+    }
+    .alice-carousel__dots-item.__active {
+      background-color: aliceblue;
+      transition: 0.5s;
+    }
+  }
+  .alice-carousel__prev-btn-item,
+  .alice-carousel__next-btn-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    top: 40%;
+    // box-shadow: inset 0px 0px 50px -3px rgba(0, 0, 0, .5);
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: cursive;
+    height: 5rem;
+    transition: 0.5s;
+
+    span {
+      text-shadow: 2px 3px 5px black;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 1.5rem;
+      height: 3rem;
+    }
+  }
+  .alice-carousel__prev-btn-item {
+    position: absolute;
+    left: 0;
+  }
+  .alice-carousel__next-btn-item {
+    position: absolute;
+    right: 0;
+  }
+}

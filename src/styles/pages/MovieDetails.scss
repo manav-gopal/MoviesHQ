@@ -1,0 +1,394 @@
+@import "node_modules/react-modal-video/scss/modal-video.scss";
+@import '@/styles/_variables.scss';
+
+$imageBorderRadius: 8px;
+// $darkBackground: #000814;
+$darkBackground: $black;
+// $darkBackgroundOpacity: #000814cc;
+$darkBackgroundOpacity: rgba($black, 0.8);
+$lightColor: rgba($white, 0.6);
+$borderColor: rgba($white, 0.6);
+
+* {
+  box-sizing: border-box;
+}
+
+// For PC devices
+.movies_detail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  margin-top: -50px;
+
+  * {
+    color: white;
+  }
+
+  .bg_wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 -50px 50px -10px $darkBackground;
+
+    .bg_blur {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      background: $darkBackgroundOpacity;
+      align-items: center;
+      justify-content: center;
+
+      .orignal_header {
+        display: flex;
+        width: calc(100% - 40px);
+        height: calc(100% - 30px);
+        padding: 15px 20px;
+
+        .poster_wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          position: relative;
+          align-items: center;
+          min-width: 300px;
+          width: 300px;
+          height: 100%;
+
+          .poster {
+            border-radius: $imageBorderRadius $imageBorderRadius 0 0;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .ott_offer {
+            width: 100%;
+            height: 60px;
+            background-color: $darkBackground;
+            border-radius: 0 0 $imageBorderRadius $imageBorderRadius;
+          }
+        }
+      }
+    }
+  }
+}
+
+.poster_header_wrapper {
+  width: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+
+  .header_poster {
+    .ott_title {
+      padding-bottom: 20px;
+
+      h1.title {
+        margin: 0;
+
+        .name {
+          font-weight: bolder;
+          font-size: 2.3rem;
+        }
+
+        .tag.release_date {
+          opacity: 0.5;
+          font-weight: 400;
+        }
+      }
+
+      // Certification and Genres/Runtimes styles
+      .facts {
+        .certification {
+          display: inline-flex;
+          white-space: nowrap;
+          align-items: center;
+          padding: 0.06em 4px 0.15em !important;
+          border: 1px solid $borderColor;
+          color: $borderColor;
+          line-height: 1;
+          border-radius: 2px;
+          margin-right: 7px;
+        }
+
+        // time.release {
+        //   // Add any specific styles for the time element if needed
+        // }
+
+        .genres,
+        .runtime {
+          padding-left: 20px;
+          position: relative;
+        }
+
+        .genres::before,
+        .runtime::before {
+          font-size: 1.1em;
+          line-height: 1;
+          content: "•";
+          position: absolute;
+          top: 0;
+          left: 7px;
+          display: inline-flex;
+          align-items: center;
+        }
+      }
+    }
+
+    // Rating and Trailer styles
+    nav.action {
+      display: flex;
+      padding: 0;
+      flex-direction: row;
+      list-style: none;
+      margin-bottom: 20px;
+      width: 100%;
+      height: 68px;
+      align-items: center;
+
+      ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        // li {
+        //   // Existing styles for li elements
+        // }
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+
+        .circular_bar {
+          transform: translate(50%, 75%);
+          width: 68px;
+          height: 68px;
+        }
+
+        .percentage {
+          font-size: 1.5rem;
+
+          span {
+            font-size: 0.8rem;
+          }
+        }
+
+        .text {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0 0 0 6px;
+          font-weight: 700;
+          white-space: pre-line;
+        }
+      }
+
+      .trailer {
+        cursor: pointer;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+
+        .modal-video {
+          backdrop-filter: blur(3px);
+        }
+
+        button {
+          cursor: pointer;
+          background: none;
+          border: none;
+          display: flex;
+          align-items: center;
+          color: inherit;
+          font-size: inherit;
+        }
+
+        .playIcon {
+          filter: invert(1);
+          color: $white;
+          background-image: url(https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-175-play-806cb05551791b8dedd7f8d38fd3bd806e2d397fcfeaa00a5cc9129f0819fd07.svg);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 1em;
+          height: 1em;
+          background-position: center center;
+          background-repeat: no-repeat;
+          color: inherit;
+          box-sizing: border-box;
+        }
+      }
+    }
+
+    .header_info {
+      h2.tagline {
+        margin-bottom: 0;
+        font-size: 1.1em;
+        font-weight: 400;
+        font-style: italic;
+        opacity: 0.7;
+      }
+
+      h3 {
+        // Add styles for the new h3 elements
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+      }
+
+      // p.overview {
+      //   // Add styles for the overview paragraph if needed
+      // }
+
+      ol.leadPeoples {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        margin-top: 20px;
+
+        li {
+          width: 33%;
+          text-align: left;
+          padding-right: 20px;
+          min-width: 140px;
+
+          strong {
+            display: block;
+            font-size: 1em;
+            margin: 0;
+            padding: 20px 0 0 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .character {
+            display: block;
+            padding: 0;
+            font-size: 0.9em;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive for Mobile
+@media (max-width: 600px) {
+  .nav_cover {
+    height: 6vh;
+  }
+
+  .movies_detail {
+    .bg_wrapper {
+      height: 40vh;
+
+      .bg_blur {
+        .orignal_header {
+          .poster_wrapper {
+            max-width: 150px;
+            min-width: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .res_content {
+    width: 100dvw;
+    height: 100vh;
+  }
+
+  .poster_header_wrapper {
+    width: 100%;
+    padding-left: 0;
+
+    .header_poster {
+      .ott_title {
+        padding-bottom: 0;
+
+        .title {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+        }
+
+        .name {
+          text-align: center;
+          font-size: 1.7rem;
+          padding-right: 10px;
+        }
+
+        .tag.release_date {
+          padding-right: 10px;
+          font-size: 1.3rem;
+          text-align: center;
+        }
+
+        .facts {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          .certification {
+            margin-top: 10px;
+          }
+
+          .genres,
+          .runtime {
+            margin: 10px 10px 0 0;
+            padding-left: 0;
+          }
+
+          .release {
+            margin-top: 10px;
+          }
+
+          .runtime::before {
+            font-size: 1.1em;
+            line-height: 1;
+            content: "•";
+            position: absolute;
+            top: 0;
+            left: 7px;
+            display: inline-flex;
+            align-items: center;
+          }
+        }
+      }
+
+      .action {
+        margin-bottom: 0;
+        justify-content: center;
+
+        .rating {
+          transform: scale(0.7);
+          border-right: 2px solid $white;
+          padding-right: 4rem;
+
+          .text {
+            flex-wrap: nowrap;
+          }
+        }
+      }
+
+      .header_info {
+        padding: 20px;
+      }
+    }
+  }
+}

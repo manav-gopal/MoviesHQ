@@ -1,0 +1,19 @@
+.image-card {
+    min-width: 15rem;
+    height: auto;
+    margin: 0.7rem;
+    /* box-shadow: 0 4px 5px rgba(19, 19, 19, 0.2); */
+    position: relative;
+    /* overflow: hidden; */
+    border-radius: 10px;
+    /* border: 1px solid rgb(15, 15, 15); */
+    cursor: pointer;
+  }
+  .image-card:hover{
+    transform: scale(105%);
+    transition: 0.2s ease-in-out;
+  }
+  .image-card img {
+    width: 100%;
+    border-radius: 10px;
+  }

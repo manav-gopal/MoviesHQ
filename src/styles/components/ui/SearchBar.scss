@@ -1,0 +1,76 @@
+@import '@/styles/variables.scss';
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: ani cubic-bezier(0.68, -0.55, 0.27, 1.55) 800ms forwards;
+  }
+
+  .search-wrapper input {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    // padding: 20px 20px;
+    padding: 15px 15px;
+    color: $black;
+    background-color: $white;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 520ms;
+  }
+
+  .search-wrapper.focused input {
+    width: 20rem;
+    outline: none;
+    max-width: 300px;
+    border-radius: 50px;
+    padding: 20px 35px 20px 20px;
+    cursor: text;
+  }
+
+  .search-wrapper:not(.focused) input:hover {
+    transform: scale(1.18);
+  }
+
+  .search-wrapper input::placeholder {
+    color: $black;
+    opacity: 0.7;
+  }
+
+  .search-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 520ms;
+  }
+
+  .search-wrapper:not(.focused) .search-button {
+    pointer-events: none;
+  }
+
+  .search-icon {
+    display: flex;
+    color: $black;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  @keyframes ani {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+}

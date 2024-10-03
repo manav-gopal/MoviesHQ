@@ -8,6 +8,9 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
+    TMDB_API_KEY: z.string(),
+    TMDB_API_URL: z.string().url(),
+    GEMINI_API_KEY: z.string(),
   },
 
   /**
@@ -16,9 +19,9 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
-    NEXT_PUBLIC_TMDB_API_KEY: z.string(),
-    NEXT_PUBLIC_TMDB_API_URL: z.string(),
+    NEXT_PUBLIC_GEMINI_API_KEY: z.string(),
+    NEXT_PUBLIC_DEV_URL: z.string().url(),
+    NEXT_PUBLIC_PROD_URL: z.string().url(),
   },
 
   /**
@@ -27,9 +30,12 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    NEXT_PUBLIC_TMDB_API_KEY: process.env.NEXT_PUBLIC_TMDB_API_KEY,
-    NEXT_PUBLIC_TMDB_API_URL: process.env.NEXT_PUBLIC_TMDB_API_URL,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    TMDB_API_KEY: process.env.TMDB_API_KEY,
+    TMDB_API_URL: process.env.TMDB_API_URL,
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+    NEXT_PUBLIC_GEMINI_API_KEY: process.env.NEXT_PUBLIC_GEMINI_API_KEY,
+    NEXT_PUBLIC_DEV_URL: process.env.NEXT_PUBLIC_DEV_URL,
+    NEXT_PUBLIC_PROD_URL: process.env.NEXT_PUBLIC_PROD_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

@@ -9,8 +9,10 @@ const Home = () =>{
     return(
         <div className="home">
             <Slider />
-            <MovieSection title="Trending Movies" type={MovieSectionType.TRENDING} />
-            <MovieSection title="Now Playing" type={MovieSectionType.NOW_PLAYING} />
+            <div className="movie-container">   
+                <MovieSection title="Trending Movies" type={MovieSectionType.TRENDING} />
+                <MovieSection title="Now Playing" type={MovieSectionType.NOW_PLAYING} />
+            </div>
         </div>
     );
 }

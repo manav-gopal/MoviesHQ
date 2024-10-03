@@ -37,7 +37,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
     <form ref={formRef} onSubmit={handleSubmit} className={`search-wrapper ${isFocused ? 'focused' : ''}`} onClick={handleClick}>
       <input
         ref={inputRef}
-        autoComplete="on"
+        autoComplete="off"
         id="input"
         type="search"
         placeholder="Search 'Top Comedy Movies'"

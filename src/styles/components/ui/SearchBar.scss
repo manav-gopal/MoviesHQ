@@ -24,9 +24,9 @@
   .search-wrapper.focused input {
     width: 20rem;
     outline: none;
-    max-width: 300px;
+    max-width: 250px;
     border-radius: 50px;
-    padding: 20px 35px 20px 20px;
+    padding: 15px 15px;
     cursor: text;
   }
 
@@ -41,9 +41,7 @@
 
   .search-button {
     position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
+    right: 4px;
     background: none;
     border: none;
     cursor: pointer;
@@ -51,6 +49,7 @@
     align-items: center;
     justify-content: center;
     transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 520ms;
+    transform: scale(.8);
   }
 
   .search-wrapper:not(.focused) .search-button {

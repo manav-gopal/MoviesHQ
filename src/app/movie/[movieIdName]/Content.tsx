@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import "@/styles/pages/Content.scss";
 import UserCard from "@/components/card/usercard/UserCard";

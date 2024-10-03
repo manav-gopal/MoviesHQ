@@ -17,6 +17,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/react-modal-video": "^1.2.3",
+    "@vercel/speed-insights": "^1.0.12",
     "autoprefixer": "^10.4.20",
     "axios": "^1.4.0",
     "canvas": "^2.11.2",

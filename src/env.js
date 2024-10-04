@@ -19,7 +19,6 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    NEXT_PUBLIC_GEMINI_API_KEY: z.string(),
     NEXT_PUBLIC_DEV_URL: z.string().url(),
     NEXT_PUBLIC_PROD_URL: z.string().url(),
   },
@@ -33,7 +32,6 @@ export const env = createEnv({
     TMDB_API_KEY: process.env.TMDB_API_KEY,
     TMDB_API_URL: process.env.TMDB_API_URL,
     GEMINI_API_KEY: process.env.GEMINI_API_KEY,
-    NEXT_PUBLIC_GEMINI_API_KEY: process.env.NEXT_PUBLIC_GEMINI_API_KEY,
     NEXT_PUBLIC_DEV_URL: process.env.NEXT_PUBLIC_DEV_URL,
     NEXT_PUBLIC_PROD_URL: process.env.NEXT_PUBLIC_PROD_URL,
   },

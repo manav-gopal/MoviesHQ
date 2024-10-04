@@ -23,7 +23,7 @@ const getBaseUrl = () => {
     return window.location.origin;
   }
   if (process.env.NODE_ENV === 'production') {
-    return process.env.NEXT_PUBLIC_PROD_URL ?? 'https://moviehq-manav.vercel.app';
+    return process.env.NEXT_PUBLIC_PROD_URL ?? 'http://localhost:3000';
   }
   return process.env.NEXT_PUBLIC_DEV_URL ?? 'http://localhost:3000';
 };

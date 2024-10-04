@@ -10,44 +10,29 @@ export default function MoviesId() {
         const handleClick = (e: MouseEvent) => {
             console.log("HandleClick clicked");
 
-
-            //for movie card
             const target = e.target as HTMLElement;
-            const movieCard = target.closest('.movie-card')!;
-            if (movieCard) {
-                const movieId = movieCard.getAttribute("data-movie_id");
-                const movieName = movieCard.getAttribute("data-movie_name");
-                router.push(`/movie/${movieId}-${movieName?.split(' ').join('-')}`);
-
-            }
-
-            //for Reccomendation card
+            const movieCard = target.closest('.movie-card');
             const recommendationCard = target.closest('.recommendation .card');
-            if (recommendationCard) {
-                const movieId = recommendationCard.getAttribute("data-movie_id");
-                const movieName = recommendationCard.getAttribute("data-movie_name");
-                router.push(`/movie/${movieId}-${movieName?.split(' ').join('-')}`);
+            const movieSlider = target.closest('.slider-content span');
+
+            let movieId, movieName;
+
+            if (movieCard || recommendationCard || movieSlider) {
+                const element = movieCard ?? recommendationCard ?? movieSlider;
+                movieId = element?.getAttribute("data-movie_id");
+                movieName = element?.getAttribute("data-movie_name");
+
+                if (movieId && movieName) {
+                    const formattedName = movieName.split(' ').join('-');
+                    router.push(`/movie/${movieId}-${formattedName}`);
+                } else {
+                    console.error('Invalid movie data:', { movieId, movieName });
+                }
             }
-
-
-            //for movie slider
-            const movieSlider = target.closest('.slider-content span')!;
-            if (movieSlider) {
-                const movieId = movieSlider.getAttribute("data-movie_id");
-                const movieName = movieSlider.getAttribute("data-movie_name");
-                router.push(`/movie/${movieId}-${movieName?.split(' ').join('-')}`);
-            }
-
-
         };
 
-        // Attach the event listener
-        document.addEventListener("click", handleClick);
-
-        // Clean up the event listener
-        return () => {
-            document.removeEventListener("click", handleClick);
-        };
+        document.addEventListener('click', handleClick);
+        return () => document.removeEventListener('click', handleClick);
     }, [router]);
 
     return null;

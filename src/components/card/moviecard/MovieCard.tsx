@@ -13,38 +13,44 @@ interface Movie {
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
   const { title, poster_path, vote_average, id } = movie;
-  let valid = "block"; // If the image path is null then we will not display that card
-  if (poster_path == null || vote_average === 0) {
-    valid = "none";
+
+  if (!id || !title) {
+    console.error('Invalid movie data:', movie);
+    return null;
   }
+
+  const valid = poster_path != null && vote_average !== 0;
 
   return (
     <div
       className="movie-card"
-      style={{ display: valid }}
+      style={{ display: valid ? 'block' : 'none' }}
       data-movie_id={id}
       data-movie_name={title}
     >
-      <div className="card-img">
-        <Image
-          src={IMG_PATH + poster_path}
-          alt={title}
-          width={100}
-          height={100}
-          style={{ borderRadius: "10px" }}
-          loading="lazy"
-        />
-      </div>
-      <CircularProgressBar
-        className="bar"
-        percentage={vote_average * 10}
-        color={`${getClassByRate(vote_average)}`}
-        widthAndHeight={36}
-      />
-      <div className="movie-info">
-        <h3>{title}</h3>
-        {/* <span className={getClassByRate(vote_average)}>{vote_average}</span> */}
-      </div>
+      {valid && (
+        <>
+          <div className="card-img">
+            <Image
+              src={IMG_PATH + poster_path}
+              alt={title}
+              width={100}
+              height={100}
+              style={{ borderRadius: "10px" }}
+              loading="lazy"
+            />
+          </div>
+          <CircularProgressBar
+            className="bar"
+            percentage={vote_average * 10}
+            color={getClassByRate(vote_average)}
+            widthAndHeight={36}
+          />
+          <div className="movie-info">
+            <h3>{title}</h3>
+          </div>
+        </>
+      )}
     </div>
   );
 };

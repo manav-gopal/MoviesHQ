@@ -12,9 +12,9 @@ import {
   fetchMovieImages,
 } from "@/lib/api/movieDataAPI";
 import Spinner from "@/components/ui/Spinner";
-import { notFound } from "next/navigation";
 
-const MovieData = async ({ movieId }: { movieId: number }) => {
+const MovieData = async ({ movieId, movieName }: { movieId: number, movieName: string }) => {
+  console.log("MovieName:", movieName);
   const startTime = performance.now();
   try {
     const [
@@ -27,7 +27,7 @@ const MovieData = async ({ movieId }: { movieId: number }) => {
       reviews,
       external_ids,
       images,
-    ] = await Promise.all([
+    ] = await Promise.allSettled([
       fetchMovieDetails(movieId),
       fetchMovieCredits(movieId),
       fetchMovieKeywords(movieId),
@@ -43,33 +43,17 @@ const MovieData = async ({ movieId }: { movieId: number }) => {
     const timeTaken = endTime - startTime;
     console.log(`[MovieData] Fetched data for movie ${movieId} in ${timeTaken.toFixed(2)}ms`);
 
-    // Check if any of the fetched data is null or undefined
-    if (
-      !details ||
-      !credits ||
-      !keywords ||
-      !recommendations ||
-      !release_dates ||
-      !video ||
-      !reviews ||
-      !external_ids ||
-      !images
-    ) {
-      console.error("One or more fetch requests returned null or undefined");
-      notFound();
-    }
-
     return (
       <MovieDetail
-        movieDetails={details}
-        movieReleaseDates={release_dates}
-        movieCredits={credits}
-        movieKeywords={keywords}
-        movieVideo={video}
-        movieRecommendations={recommendations}
-        movieReviews={reviews}
-        movieExternalIds={external_ids}
-        movieImages={images}
+        movieDetails={details.status === "fulfilled" ? details.value : null}
+        movieReleaseDates={release_dates.status === "fulfilled" ? release_dates.value : null}
+        movieCredits={credits.status === "fulfilled" ? credits.value : null}
+        movieKeywords={keywords.status === "fulfilled" ? keywords.value : null}
+        movieVideo={video.status === "fulfilled" ? video.value : null}
+        movieRecommendations={recommendations.status === "fulfilled" ? recommendations.value : null}
+        movieReviews={reviews.status === "fulfilled" ? reviews.value : null}
+        movieExternalIds={external_ids.status === "fulfilled" ? external_ids.value : null}
+        movieImages={images.status === "fulfilled" ? images.value : null}
       />
     );
   } catch (error) {
@@ -78,19 +62,21 @@ const MovieData = async ({ movieId }: { movieId: number }) => {
   }
 };
 
-const MovieDetailContainer = ({
-  params,
-}: {
-  params: { movieIdName: string };
-}) => {
+const Page = ({ params }: { params: { movieIdName: string } }) => {
   const { movieIdName } = params;
-  const movieId = Number(movieIdName.split("-")[0]);
+  const [movieId, ...movieNameParts] = movieIdName.split("-");
+  const movieName = movieNameParts.join(" ");
+
+  if (!movieId || isNaN(Number(movieId))) {
+    console.error('Invalid movieId:', movieId);
+    return <div>Invalid movie ID</div>;
+  }
 
   return (
     <Suspense fallback={<Spinner>{null}</Spinner>}>
-      <MovieData movieId={movieId} />
+      <MovieData movieId={Number(movieId)} movieName={movieName} />
     </Suspense>
   );
 };
 
-export default MovieDetailContainer;
+export default Page;

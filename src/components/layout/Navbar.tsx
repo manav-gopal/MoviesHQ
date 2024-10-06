@@ -23,7 +23,7 @@ const Navbar = () => {
           router.push("/home");
         }}
       >
-        <Image src={logo} alt="logo Not Found" />
+        <Image src={logo} alt="logo Not Found" priority />
       </section>
       <section className="links">
         <Link href="#">Home</Link>

@@ -6,67 +6,59 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { fetchMovieTrending } from "@/lib/api/movieDataAPI";
 import "@/styles/components/layout/Slider.scss";
 import type { Movie } from "@/types/movieDataAPI.types";
-// import Image from 'next/image';
+import Image from "next/image";
 
 const Slider = () => {
-  const [data, setData] = useState<Movie[] | null>(null);
+  const [data, setData] = useState<Movie[]>([]); // Initialize with an empty array
 
   useEffect(() => {
-    async function fetchData(): Promise<void> {
+    const fetchData = async () => {
       try {
         const trendingData = await fetchMovieTrending();
         if (trendingData) setData(trendingData.results);
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     void fetchData();
   }, []);
 
-  const items: React.ReactNode[] = [];
-  if (data) {
-    const chunkedArray = data.slice(0, 6);
-    const imgUrl = "https://image.tmdb.org/t/p/w1280/";
-    // const lowImgUrl = 'https://image.tmdb.org/t/p/w300/';
+  const imgUrl = "https://image.tmdb.org/t/p/w1280/";
+  const lowImgUrl = "https://image.tmdb.org/t/p/w300/";
 
-    chunkedArray.forEach((item, index) => {
-      const slideContent = (
-        <div className="slider-item" key={index}>
-          <div
-            className="slider-content"
-            // style={{ backgroundImage: `linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,8,20,.5),rgba(0,8,20,.8),rgba(0,8,20,1)),url(${imgUrl}${item.backdrop_path})` }}
-            style={{
-              backgroundImage: `linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.5),rgba(0,0,0,.8),rgba(0,0,0,1)),url(${imgUrl}${item.backdrop_path})`,
-            }}
-          >
-            {/* <Image
-              src={`${imgUrl}${item.backdrop_path}`} 
-              blurDataURL={`${lowImgUrl}${item.backdrop_path}`}
-              alt={item.title}
-              layout="fill"
-              quality={75}
-              priority={index === 0}  // First image has loading priority
-            /> */}
-            <h2>
-              {item.title}
-              <br />
-              <span data-movie_id={item.id} data-movie_name={item.title}>
-                Details
-                <i />
-              </span>
-            </h2>
-          </div>
+   // Function to render carousel items
+   const renderItems = () => {
+    return data.slice(0, 6).map((item,index) => (
+      <div className="slider-item" key={item.id}>
+        <div className="slider-content">
+          <Image
+            src={`${imgUrl}${item.backdrop_path}`}
+            blurDataURL={`${lowImgUrl}${item.backdrop_path}`}
+            alt={item.title}
+            layout="fill"
+            objectFit="cover"
+            quality={75}
+            priority={true}
+          />
+          <h2>
+            {item.title}
+            <br />
+            <span data-movie_id={item.id} data-movie_name={item.title}>
+              Details
+              <i />
+            </span>
+          </h2>
+          <div className="shadow" />
         </div>
-      );
-      items.push(slideContent);
-    });
-  }
+      </div>
+    ));
+  };
 
   return (
     <div className="slider-container">
       <AliceCarousel
-        items={items}
+        items={renderItems()}
         autoPlay
         autoPlayInterval={3000}
         animationType="fadeout"

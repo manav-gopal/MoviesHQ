@@ -1,11 +1,16 @@
 "use client";
 
 import React, { Suspense, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import "@/styles/pages/Search.scss";
-import MovieCard from "@/components/card/moviecard/MovieCard";
 import { type Movie } from "@/types/movieDataAPI.types";
 import fetchSearchData from "@/lib/api/genAI";
 import Spinner from "@/components/ui/Spinner";
+
+    // Start of Selection
+    const MovieCard = dynamic(() => import("@/components/card/moviecard/MovieCard"), {
+      loading: () => <Spinner>{null}</Spinner>,
+    });
 
 const Search = ({ query }: { query: string }) => {
   const [movieData, setMovieData] = useState<Movie[]>([]);
@@ -23,23 +28,21 @@ const Search = ({ query }: { query: string }) => {
   }, [query]);
 
   return (
-    <Suspense fallback={<Spinner>{null}</Spinner>}>
-      {isLoading ? (
-        <Spinner>{null}</Spinner>
-      ) : (
-        <div className="search-movies">
-          <h2>
-            Search Results for &quot;
-            <span className="text-purple-400">{query}</span>&quot;
-          </h2>
-          <div className="movie-list">
-            {movieData.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-          </div>
+      <div className="search-movies">
+        <h2>
+          Search Results for &quot;
+          <span className="text-purple-400">{query}</span>&quot;
+        </h2>
+        <div className="movie-list">
+          {Array.from({ length: 20 }).map((_, index) => (
+            <MovieCard
+              key={movieData[index]?.id ?? `loading-${index}`}
+              movie={movieData[index]!}
+              isLoading={isLoading}
+            />
+          ))}
         </div>
-      )}
-    </Suspense>
+      </div>
   );
 };
 

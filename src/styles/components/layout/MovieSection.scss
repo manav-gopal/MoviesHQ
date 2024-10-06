@@ -18,7 +18,11 @@
   .movie-list {
     display: flex;
     overflow: hidden;
-    overflow-x: scroll;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
   }
   .movie-card {
     min-width: 120px;

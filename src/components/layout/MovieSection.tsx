@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import "@/styles/components/layout/MovieSection.scss";
-import MovieCard from "@/components/card/moviecard/MovieCard";
 import {
   fetchMovieTrending,
   fetchMovieNowPlaying,
 } from "@/lib/api/movieDataAPI";
 import type { Movie } from "@/types/movieDataAPI.types";
+import Spinner from "@/components/ui/Spinner";
+
+const MovieCard = React.lazy(() => import("@/components/card/moviecard/MovieCard"));
 
 export enum MovieSectionType {
   TRENDING = "trending",
@@ -44,18 +46,20 @@ const MovieSection: React.FC<MovieSectionProps> = ({ title, type }) => {
     void fetchMovies();
   }, [type]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="movie-section">
-      <h2>{title}</h2>
-      <div className="movie-list">
-        {movieData.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+      <h2 style={{ opacity: isLoading ? 0 : 1 }}>{title}</h2>
+      <Suspense fallback={<Spinner>{null}</Spinner>}>
+        <div className="movie-list">
+          {Array.from({ length: 20 }).map((_, index) => (
+            <MovieCard
+              key={movieData[index]?.id ?? `loading-${index}`}
+              movie={movieData[index]!}
+              isLoading={isLoading}
+            />
+          ))}
+        </div>
+      </Suspense>
     </div>
   );
 };

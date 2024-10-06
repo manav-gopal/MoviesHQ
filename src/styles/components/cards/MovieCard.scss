@@ -2,67 +2,94 @@
     width: 200px;
     height: 350px;
     margin: 0.7rem;
-    /* box-shadow: 0 4px 5px rgba(19, 19, 19, 0.2); */
     position: relative;
     border-radius: 10px;
-    /* border: 1px solid rgb(15, 15, 15); */
     cursor: pointer;
-  }
-  .movie-card .card-img img {
-    transition: transform 0.2s ease-in;
-  }
-  
-  .movie-card:hover .card-img img {
-    transform: scale(1.1) rotate(5deg);
-  }
+    opacity: 0;
+    
+    * {
+        transition: all 0.5s ease-in-out;
+    }
+    
+    &.loaded {
+        opacity: 1;
+    }
 
-  .movie-card img {
-    width: 100%;
-    border-radius: 10px;
-  }
-  .movie-card .card-img{
-    overflow: hidden;
-    border-radius: 10px;
-    width: 100%;
-  }
-  .counter{
-    transform: translate(-50%,-100%);
-  }
-  .movie-info {
-    color: #eee;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.2rem;
-    padding: 0.5rem 1rem 1rem;
-    letter-spacing: 0.5px;
-    font-size: 0.7rem;
-  }
-  
-  .movie-info h3 {
-    margin-top: 0;
-  }
-  
-  .movie-info span {
-    background-color: var(--primary-color);
-    padding: 0.25rem 0.5rem;
-    border-radius: 3px;
-    font-weight: bold;
-  }
-  
-  .movie-info span.green {
-    color: lightgreen;
-  }
-  
-  .movie-info span.orange {
-    color: orange;
-  }
-  
-  .movie-info span.red {
-    color: red;
-  }
-  
-  .movie-card:hover .overview {
-    transform: translateY(0);
-  }
-  
+    &:hover {
+        .card-img img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .overview {
+            transform: translateY(0);
+        }
+    }
+
+    .card-img {
+        overflow: hidden;
+        border-radius: 10px;
+        width: 100%;
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+
+    .counter {
+        transform: translate(-50%, -100%);
+    }
+
+    .movie-info {
+        color: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.2rem;
+        padding: 0.5rem 1rem 1rem;
+        letter-spacing: 0.5px;
+        font-size: 0.7rem;
+
+        h3 {
+            margin-top: 0;
+        }
+
+        span {
+            background-color: var(--primary-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-weight: bold;
+
+            &.green { color: lightgreen; }
+            &.orange { color: orange; }
+            &.red { color: red; }
+        }
+    }
+
+    &.is-loading {
+        height: 300px;
+        opacity: 1;
+
+        .card-img,
+        .movie-info h3 {
+            background: linear-gradient(110deg, #232323 10%, #292929 40%, #232323 60%);
+            border-radius: 5px;
+            background-size: 200% 100%;
+            animation: shine 1.5s linear infinite;
+        }
+
+        .card-img {
+            height: 75%;
+        }
+
+        .movie-info h3 {
+            height: 20px;
+            width: 100%;
+            margin: 10px auto;
+        }
+    }
+}
+
+@keyframes shine {
+    to { background-position-x: -400%; }
+}
